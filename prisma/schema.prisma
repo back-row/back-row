@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model map {
+  mapid         Int         @id @default(autoincrement())
+  mapmap        Int?
+  mapdifficulty Int?
+  mapquizid     Int?
+  maptutorialid Int?
+  quiz          quiz?       @relation(fields: [mapquizid], references: [quizid], onDelete: NoAction, onUpdate: NoAction)
+  tutorial      tutorial?   @relation(fields: [maptutorialid], references: [tutorialid], onDelete: NoAction, onUpdate: NoAction)
+  userscore     userscore[]
+}
+
+model quiz {
+  quizid            Int     @id @default(autoincrement())
+  quizquestion      String? @db.VarChar(255)
+  quizanswer1       String? @db.VarChar(255)
+  quizanswer2       String? @db.VarChar(255)
+  quizanswer3       String? @db.VarChar(255)
+  quizcorrectanswer Int?
+  map               map[]
+}
+
+model tutorial {
+  tutorialid          Int     @id @default(autoincrement())
+  tutorialdescription String? @db.VarChar(255)
+  tutorialhint        String? @db.VarChar(255)
+  map                 map[]
+}
+
+model users {
+  usersid         Int         @id @default(autoincrement())
+  usersname       String?     @db.VarChar(255)
+  usersemail      String?     @db.VarChar(255)
+  userspassword   String?     @db.VarChar(255)
+  userstotalscore Int?
+  userslevel      Int?
+  userscore       userscore[]
+}
+
+model userscore {
+  userscoreid      Int    @id @default(autoincrement())
+  userscoreusersid Int?
+  userscoremapid   Int?
+  userscorescore   Int?
+  map              map?   @relation(fields: [userscoremapid], references: [mapid], onDelete: NoAction, onUpdate: NoAction)
+  users            users? @relation(fields: [userscoreusersid], references: [usersid], onDelete: NoAction, onUpdate: NoAction)
+}
