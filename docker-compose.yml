@@ -6,7 +6,9 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ~/docker/postgres:/var/lib/postgresql/data
+      # - ~/docker/postgres:/var/lib/postgresql/data
+        #create tables
+      - ./sql/backRowdb.sql/:/docker-entrypoint-initdb.d/backRowdb.sql
     environment:
       - POSTGRES_PASSWORD=dev
       - POSTGRES_USER=dev
