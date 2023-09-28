@@ -1,13 +1,23 @@
-import { PrismaClient, tutorial } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function main() {
-  const tutorial: tutorial = await prisma.tutorial.create({
+export async function addAlice() {
+  await prisma.tutorial.create({
     data: {
       tutorialdescription: 'Alice',
       tutorialhint: 'test@tst.es'
     }
   });
-  console.log(tutorial);
+  await closeConnection();
+}
+
+async function closeConnection() {
+  try {
+    prisma.$disconnect;
+  } catch (e) {
+    console.log(e);
+    prisma.$disconnect;
+    process.exit(1);
+  }
 }
