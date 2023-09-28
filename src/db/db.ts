@@ -11,13 +11,13 @@ export async function addAlice() {
   });
   await closeConnection();
 }
-/* later add user:users */
-export async function createUsers(){
+
+export async function createUsers(user: users ){
   await prisma.users.create({
     data: {
-      usersname: 'Alice', 
-      usersemail: 'alice@gmailcom',
-      userspassword: '123456',
+      usersname: user.usersname, 
+      usersemail: user.usersemail,
+      userspassword: user.userspassword,
       userstotalscore: null,
       userslevel: null,
     }
@@ -30,39 +30,41 @@ export async function getAllUsers() {
     const users = await prisma.users.findMany();
     console.log("This is printing out all users",  users);
 
+    await closeConnection(); 
 }
 
-export async function getUserByID() {
+export async function getUserByID(id: number) {
   const user = await prisma.users.findUnique({
     where: {
-      usersid: 23,
+      usersid: id,
     }
   });
 
   console.log("This is gonna print out just one user: ", user);
+  await closeConnection(); 
 }
 
-export async function deletUsers() {
-  const users = await prisma.users.deleteMany();
-}
 
-export async function deletUsersById() {
+export async function deletUsersById(id: number) {
   const users = await prisma.users.delete({
     where: {
-      usersid: 2,
+      usersid: id,
     }
   })
+  await closeConnection(); 
 }
 
-export async function updateUserByID() {
+export async function updateUserByID(id: number, data: users) {
   const users = await prisma.users.update({
       where: {
-        usersid: 23,
+        usersid: id,
       },
       data: {
-        usersname: 'Robert',
+        usersname: data.usersname, 
+    
       }
   })
+  await closeConnection(); 
 }
 
 
