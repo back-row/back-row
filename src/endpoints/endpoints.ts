@@ -6,7 +6,6 @@ import { userInfo } from 'os';
 export function endpoints(app: Express) {
   app.post('/', (req: Request, res: Response) => {
     try {
-      res.send('BACKROW');
 
       const data = req.body;
       createUsers(data);
@@ -18,8 +17,11 @@ export function endpoints(app: Express) {
 
   app.get('/users', (req: Request, res: Response) => {
     try {
-      res.send('BACKROW');
-      getAllUsers();
+      
+      const users = getAllUsers();
+
+      res.json(users);
+      
     } catch (error) {
       console.log('Error getting all users:', error);
       res.status(500).json({ error: 'An error occurred while getting all users' });
@@ -29,9 +31,12 @@ export function endpoints(app: Express) {
   app.get('/users/:id', (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
+      
+      const user = getUserByID(number);
 
-      res.send('BACKROW');
-      getUserByID(number);
+      res.json(user);
+      
+
     } catch (error) {
       console.log('Error getting user by id:', error);
       res.status(500).json({ error: 'An error occurred while getting user by id' });
@@ -42,7 +47,6 @@ export function endpoints(app: Express) {
     try {
       const number = +req.params.id;
 
-      res.send('BACKROW');
       deletUsersById(number);
       
     } catch (error) {
@@ -54,10 +58,8 @@ export function endpoints(app: Express) {
   app.post('/users/update/:id/', (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
-
       const data = req.body;
 
-      res.send('BACKROW');
       updateUserByID(number, data);
     } catch (error) {
       console.log('Error updating user by id:', error);

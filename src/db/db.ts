@@ -18,8 +18,8 @@ export async function createUsers(user: users) {
       usersname: user.usersname,
       usersemail: user.usersemail,
       userspassword: user.userspassword,
-      userstotalscore: null,
-      userslevel: null
+      userstotalscore: 0,
+      userslevel: 1
     }
   });
   await closeConnection();
@@ -27,9 +27,11 @@ export async function createUsers(user: users) {
 
 export async function getAllUsers() {
   const users = await prisma.users.findMany();
+
   console.log('This is printing out all users', users);
 
   await closeConnection();
+  return users;
 }
 
 export async function getUserByID(id: number) {
@@ -37,8 +39,10 @@ export async function getUserByID(id: number) {
     where: {
       usersid: id
     }
+
   });
 
+  return user;
   console.log('This is gonna print out just one user: ', user);
   await closeConnection();
 }
