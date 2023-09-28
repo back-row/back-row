@@ -14,7 +14,7 @@ export async function addAlice() {
 
 export async function createUsers(user: users) {
   await prisma.users.create({
-    
+
     data: {
       usersname: user.usersname,
       usersemail: user.usersemail,
@@ -54,6 +54,8 @@ export async function deletUsersById(id: number) {
       usersid: id
     }
   });
+
+  return users;
   await closeConnection();
 }
 

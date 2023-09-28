@@ -4,6 +4,7 @@ import { deletUsersById } from '../db/db';
 import { userInfo } from 'os';
 
 export function endpoints(app: Express) {
+
   app.post('/', async (req: Request, res: Response) => {
     try {
       const data = req.body;
@@ -42,11 +43,14 @@ export function endpoints(app: Express) {
     }
   });
 
-  app.delete('/users/delete/:id', async (req: Request, res: Response) => {
+  app.post('/users/delete/:id',async(req: Request, res: Response) => {
     try {
       const number = +req.params.id;
 
-      await deletUsersById(number);
+       await deletUsersById(number);
+
+       res.status(200).json({ message: 'User deleted' });
+       
     } catch (error) {
       console.log('Error deleting user by id:', error);
       res.status(500).json({ error: 'An error occurred while deleting user by id' });
