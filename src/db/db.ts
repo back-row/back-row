@@ -12,79 +12,57 @@ export async function addAlice() {
   await closeConnection();
 }
 
-export async function createUsers(user: users ){
+export async function createUsers(user: users) {
   await prisma.users.create({
     data: {
-      usersname: user.usersname, 
+      usersname: user.usersname,
       usersemail: user.usersemail,
       userspassword: user.userspassword,
       userstotalscore: null,
-      userslevel: null,
+      userslevel: null
     }
   });
-  await closeConnection(); 
- 
+  await closeConnection();
 }
 
 export async function getAllUsers() {
-    const users = await prisma.users.findMany();
-    console.log("This is printing out all users",  users);
+  const users = await prisma.users.findMany();
+  console.log('This is printing out all users', users);
 
-    await closeConnection(); 
+  await closeConnection();
 }
 
 export async function getUserByID(id: number) {
   const user = await prisma.users.findUnique({
     where: {
-      usersid: id,
+      usersid: id
     }
   });
 
-  console.log("This is gonna print out just one user: ", user);
-  await closeConnection(); 
+  console.log('This is gonna print out just one user: ', user);
+  await closeConnection();
 }
-
 
 export async function deletUsersById(id: number) {
   const users = await prisma.users.delete({
     where: {
-      usersid: id,
+      usersid: id
     }
-  })
-  await closeConnection(); 
+  });
+  await closeConnection();
 }
 
 export async function updateUserByID(id: number, data: users) {
   const users = await prisma.users.update({
-      where: {
-        usersid: id,
-      },
-      data: {
-        usersname: data.usersname, 
-    
-      }
-  })
-  await closeConnection(); 
+    where: {
+      usersid: id
+    },
+    data: {
+      usersname: data.usersname
+    }
+  });
+  await closeConnection();
 }
-
-
-// async function getUserByID(tutorialId: number) {
-//   const user = await prisma.tutorial.findUnique({
-//     where: {
-//       tutorialid: tutorialId
-//     }
-//   });
-//   await closeConnection();
-//   return user;
-// }
-
-  
-// (async () => {
-//   const user = await getUserByID(2);
-//   console.log(user);
-
-// })();
-
 
 async function closeConnection() {
   try {
