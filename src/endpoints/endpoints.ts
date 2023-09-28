@@ -38,12 +38,13 @@ export function endpoints(app: Express) {
     }
   });
 
-  app.get('/users/delete/:id', (req: Request, res: Response) => {
+  app.delete('/users/delete/:id', (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
 
       res.send('BACKROW');
       deletUsersById(number);
+      
     } catch (error) {
       console.log('Error deleting user by id:', error);
       res.status(500).json({ error: 'An error occurred while deleting user by id' });
