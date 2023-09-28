@@ -63,6 +63,9 @@ export function endpoints(app: Express) {
       const data = req.body;
 
       await updateUserByID(number, data);
+
+      res.status(200).json({ message: 'User updated' });
+      
     } catch (error) {
       console.log('Error updating user by id:', error);
       res.status(500).json({ error: 'An error occurred while updating user by id' });
