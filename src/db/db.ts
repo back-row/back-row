@@ -14,6 +14,8 @@ export async function addAlice() {
 
 export async function createUsers(user: users) {
   await prisma.users.create({
+
+    
     data: {
       usersname: user.usersname,
       usersemail: user.usersemail,

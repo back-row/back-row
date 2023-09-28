@@ -4,14 +4,17 @@ import { deletUsersById } from '../db/db';
 import { userInfo } from 'os';
 
 export function endpoints(app: Express) {
-  app.post('/', (req: Request, res: Response) => {
+  app.post('/', async(req: Request, res: Response) => {
     try {
 
       const data = req.body;
-      createUsers(data);
+      await createUsers(data);
+      res.status(200).json({ message: 'User created' });
+
     } catch (error) {
-      console.log('Error creating user:', error);
+      console.log('Error creating user:', error);  
       res.status(500).json({ error: 'An error occurred while creating user' });
+    
     }
   });
 
@@ -21,6 +24,7 @@ export function endpoints(app: Express) {
       const users = getAllUsers();
 
       res.json(users);
+      res.status(200).json({ message: 'All users' });
       
     } catch (error) {
       console.log('Error getting all users:', error);
@@ -35,6 +39,8 @@ export function endpoints(app: Express) {
       const user = getUserByID(number);
 
       res.json(user);
+
+      res.status(200).json({ message: 'User by id' });
       
 
     } catch (error) {
