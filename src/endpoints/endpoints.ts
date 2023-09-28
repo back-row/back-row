@@ -1,12 +1,21 @@
 import express, { Express, Request, Response } from 'express';
-import { addAlice } from '../db/db';
+import { addAlice,createUsers,getAllUsers, getUserByID,updateUserByID} from '../db/db';
+// import { deletUsers} from '../db/db';
+import { deletUsersById } from '../db/db';
+
 
 export function endpoints(app: Express) {
 
   app.get('/', (req: Request, res: Response) => {
     res.send('BACKROW');
-    addAlice();
-    console.log('add alice from endpoints');
+    // addAlice(); 
+    // createUsers();
+    // getAllUsers();
+    // deletUsersById();
+    updateUserByID();
+      getUserByID();
+    // deletUsers();
+ 
   });
 
   // add more endpoints here
