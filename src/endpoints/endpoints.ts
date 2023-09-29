@@ -11,8 +11,8 @@ export function endpoints(app: Express) {
         usersname: string | null; 
         usersemail: string | null; 
         userspassword: string | null; 
-        userstotalscore: number | 0; 
-        userslevel: number | 1; 
+        userstotalscore: number | null; 
+        userslevel: number | null; 
       } =  req.body;
 
       createUsers(data);

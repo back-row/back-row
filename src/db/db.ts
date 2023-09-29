@@ -18,8 +18,8 @@ export async function createUsers(user: users ){
       usersname: user.usersname, 
       usersemail: user.usersemail,
       userspassword: user.userspassword,
-      userstotalscore: null,
-      userslevel: null,
+      userstotalscore: 0,
+      userslevel: 1,
     }
   });
   await closeConnection(); 
