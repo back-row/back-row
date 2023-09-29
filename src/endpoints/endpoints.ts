@@ -1,20 +1,28 @@
-import express, { Express, Request, Response } from 'express';
+import { Express, Request, Response } from 'express';
 import { createUsers, getAllUsers, getUserByID, updateUserByID } from '../db/db';
 import { deletUsersById } from '../db/db';
-import { userInfo } from 'os';
 
 export function endpoints(app: Express) {
-  app.post('/', (req: Request, res: Response) => {
+  app.post('/addUser', (req: Request, res: Response) => {
     try {
-      res.send('BACKROW');
+    
+      const data: { 
+        usersid: number;
+        usersname: string | null; 
+        usersemail: string | null; 
+        userspassword: string | null; 
+        userstotalscore: number | 0; 
+        userslevel: number | 1; 
+      } =  req.body;
 
-      const data = req.body;
       createUsers(data);
+      res.status(201).json({"message": "user created"});
     } catch (error) {
       console.log('Error creating user:', error);
       res.status(500).json({ error: 'An error occurred while creating user' });
     }
   });
+
 
   app.get('/users', (req: Request, res: Response) => {
     try {
