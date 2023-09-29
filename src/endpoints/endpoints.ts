@@ -28,7 +28,7 @@ export function endpoints(app: Express) {
   app.get('/users', async (req: Request, res: Response) => {
     try {
       const users = await getAllUsers()
-      res.json(users);
+      res.json(users).end();
     } catch (error) {
       console.log('Error getting all users:', error);
       res.status(500).json({ error: 'An error occurred while getting all users' });
@@ -47,26 +47,35 @@ export function endpoints(app: Express) {
     }
   });
 
-  app.delete('/users/:id', (req: Request, res: Response) => {
+  app.delete('/users/:id', async (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
-
+      const user = await getUserByID(number);
+      if (user === null) {
+        res.status(412).json({"message":"invalid id"}).end();
+      } else {
       deletUsersById(number);
       res.status(204).end();
+      }
     } catch (error) {
       console.log('Error deleting user by id:', error);
       res.status(500).json({ error: 'An error occurred while deleting user by id' });
     }
   });
 
-  app.put('/users/:id/', (req: Request, res: Response) => {
+  app.put('/users/:id/', async (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
 
       const data = req.body;
+      const user = await getUserByID(number);
+      if (user === null) {
+        res.status(412).json({"message":"invalid id"}).end();
+      } else {
 
       updateUserByID(number, data);
       res.status(200).end();
+      }
     } catch (error) {
       console.log('Error updating user by id:', error);
       res.status(500).json({ error: 'An error occurred while updating user by id' });
