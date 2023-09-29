@@ -62,6 +62,7 @@ export async function updateUserByID(id: number, data: users) {
     
       }
   })
+  
   await closeConnection(); 
 }
 

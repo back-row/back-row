@@ -59,14 +59,14 @@ export function endpoints(app: Express) {
     }
   });
 
-  app.post('/users/update/:id/', (req: Request, res: Response) => {
+  app.put('/users/update/:id/', (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
 
       const data = req.body;
 
-      res.send('BACKROW');
       updateUserByID(number, data);
+      res.status(200).end();
     } catch (error) {
       console.log('Error updating user by id:', error);
       res.status(500).json({ error: 'An error occurred while updating user by id' });
