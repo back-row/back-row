@@ -47,7 +47,7 @@ export function endpoints(app: Express) {
     }
   });
 
-  app.delete('/users/delete/:id', (req: Request, res: Response) => {
+  app.delete('/users/:id', (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
 
