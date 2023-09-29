@@ -59,7 +59,7 @@ export function endpoints(app: Express) {
     }
   });
 
-  app.put('/users/update/:id/', (req: Request, res: Response) => {
+  app.put('/users/:id/', (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
 
