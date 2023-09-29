@@ -4,7 +4,7 @@ import { deletUsersById } from '../db/db';
 
 
 export function endpoints(app: Express) {
-  app.post('/addUser', (req: Request, res: Response) => {
+  app.post('/users', (req: Request, res: Response) => {
     try {
     
       const data: { 
