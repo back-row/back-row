@@ -1,6 +1,9 @@
 import { Express, Request, Response } from 'express';
-import { createUsers, getAllUsers, getUserByID, updateUserByID } from '../db/db';
+import { createUsers, getUserByID, updateUserByID } from '../db/db';
 import { deletUsersById } from '../db/db';
+import {  PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export function endpoints(app: Express) {
   app.post('/addUser', (req: Request, res: Response) => {
@@ -24,10 +27,10 @@ export function endpoints(app: Express) {
   });
 
 
-  app.get('/users', (req: Request, res: Response) => {
+  app.get('/users', async (req: Request, res: Response) => {
     try {
-      res.send('BACKROW');
-      getAllUsers();
+      const users = await prisma.users.findMany()
+      res.send(users);
     } catch (error) {
       console.log('Error getting all users:', error);
       res.status(500).json({ error: 'An error occurred while getting all users' });
