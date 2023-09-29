@@ -19,7 +19,7 @@ export function endpoints(app: Express) {
       } =  req.body;
 
       createUsers(data);
-      res.status(201).json({"message": "user created"});
+      res.status(201).end();
     } catch (error) {
       console.log('Error creating user:', error);
       res.status(500).json({ error: 'An error occurred while creating user' });
@@ -49,12 +49,12 @@ export function endpoints(app: Express) {
     }
   });
 
-  app.get('/users/delete/:id', (req: Request, res: Response) => {
+  app.delete('/users/delete/:id', (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
 
-      res.send('BACKROW');
       deletUsersById(number);
+      res.status(204).end();
     } catch (error) {
       console.log('Error deleting user by id:', error);
       res.status(500).json({ error: 'An error occurred while deleting user by id' });
