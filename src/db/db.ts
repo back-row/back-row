@@ -67,24 +67,6 @@ export async function updateUserByID(id: number, data: users) {
 }
 
 
-// async function getUserByID(tutorialId: number) {
-//   const user = await prisma.tutorial.findUnique({
-//     where: {
-//       tutorialid: tutorialId
-//     }
-//   });
-//   await closeConnection();
-//   return user;
-// }
-
-  
-// (async () => {
-//   const user = await getUserByID(2);
-//   console.log(user);
-
-// })();
-
-
 async function closeConnection() {
   try {
     prisma.$disconnect;
