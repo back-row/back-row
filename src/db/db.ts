@@ -30,8 +30,6 @@ export async function getAllUsers() {
     const users = await prisma.users.findMany();
     console.log("This is printing out all users",  users);
     return users
-
-    await closeConnection(); 
 }
 
 export async function getUserByID(id: number) {
@@ -40,9 +38,8 @@ export async function getUserByID(id: number) {
       usersid: id,
     }
   });
-
-  console.log("This is gonna print out just one user: ", user);
-  await closeConnection(); 
+   
+  return user
 }
 
 

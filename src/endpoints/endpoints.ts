@@ -2,6 +2,7 @@ import { Express, Request, Response } from 'express';
 import { createUsers, getUserByID, getAllUsers,  updateUserByID } from '../db/db';
 import { deletUsersById } from '../db/db';
 
+
 export function endpoints(app: Express) {
   app.post('/addUser', (req: Request, res: Response) => {
     try {
@@ -34,12 +35,12 @@ export function endpoints(app: Express) {
     }
   });
 
-  app.get('/users/:id', (req: Request, res: Response) => {
+  app.get('/users/:id', async (req: Request, res: Response) => {
     try {
       const number = +req.params.id;
+      const user = await getUserByID(number)
 
-      res.send('BACKROW');
-      getUserByID(number);
+      res.send(user);
     } catch (error) {
       console.log('Error getting user by id:', error);
       res.status(500).json({ error: 'An error occurred while getting user by id' });
