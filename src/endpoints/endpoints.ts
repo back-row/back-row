@@ -67,12 +67,11 @@ export function endpoints(app: Express) {
 
       const data = req.body;
       const user = await getUserByID(number);
-      if (user === null) {
-        res.status(400).json({"message":"invalid id"}).end();
+      if (user !== null && data.usersname !== null && data.usersname !== undefined) {
+        await updateUserByID(number, data);
+        res.status(200).end();
       } else {
-
-      updateUserByID(number, data);
-      res.status(200).end();
+        res.status(400).end();
       }
     } catch (error) {
       console.log('Error updating user by id:', error);
