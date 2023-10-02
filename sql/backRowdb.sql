@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS users(
 	usersId SERIAL PRIMARY KEY,
-	usersName VARCHAR(255),
-	usersEmail VARCHAR(255),
-	usersPassword VARCHAR(255),
+	usersName VARCHAR(255) NOT NULL,
+	usersEmail VARCHAR(255) NOT NULL,
+	usersPassword VARCHAR(255) NOT NULL,
 	usersTotalScore INT,
 	usersLevel INT
 );
