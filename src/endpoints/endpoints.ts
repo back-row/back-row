@@ -4,19 +4,12 @@ import { deletUsersById } from '../db/db';
 
 
 export function endpoints(app: Express) {
-  app.post('/users', (req: Request, res: Response) => {
+  app.post('/users', async (req: Request, res: Response) => {
     try {
     
-      const data: { 
-        usersid: number;
-        usersname: string | null; 
-        usersemail: string | null; 
-        userspassword: string | null; 
-        userstotalscore: number | null; 
-        userslevel: number | null; 
-      } =  req.body;
+      const data = req.body;
 
-      createUsers(data);
+      await createUsers(data);
       res.status(201).end();
     } catch (error) {
       console.log('Error creating user:', error);
