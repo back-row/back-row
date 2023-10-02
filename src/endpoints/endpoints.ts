@@ -8,7 +8,17 @@ export function endpoints(app: Express) {
     try {
       const data = req.body;
 
-      if (data.usersname !== null && data.usersname !== undefined && data.usersemail !== null && data.usersemail !== undefined && data.userspassword !== null && data.userspassword !== undefined) {
+      if (
+        data.usersname !== null && 
+        data.usersname !== undefined && 
+        data.usersemail !== null && 
+        data.usersemail !== undefined && 
+        data.userspassword !== null && 
+        data.userspassword !== undefined && 
+        data.usersname.length > 0 && 
+        data.usersemail.length > 0 && 
+        data.userspassword.length > 0
+        ) {
         await createUsers(data);
 
         res.status(201).end();
