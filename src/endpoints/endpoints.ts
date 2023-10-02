@@ -6,15 +6,20 @@ import { deletUsersById } from '../db/db';
 export function endpoints(app: Express) {
   app.post('/users', async (req: Request, res: Response) => {
     try {
-    
       const data = req.body;
 
-      await createUsers(data);
-      res.status(201).end();
+      if (data.usersname !== null && data.usersname !== undefined && data.usersemail !== null && data.usersemail !== undefined && data.userspassword !== null && data.userspassword !== undefined) {
+        await createUsers(data);
+
+        res.status(201).end();
+      } else {
+        res.status(400).end();
+      }
     } catch (error) {
-      console.log('Error creating user:', error);
+      console.error('Error creating user:', error);
       res.status(500).json({ error: 'An error occurred while creating user' });
     }
+
   });
 
 
@@ -45,7 +50,7 @@ export function endpoints(app: Express) {
       const number = +req.params.id;
       const user = await getUserByID(number);
       if (user === null) {
-        res.status(412).json({"message":"invalid id"}).end();
+        res.status(400).json({"message":"invalid id"}).end();
       } else {
       deletUsersById(number);
       res.status(204).end();
@@ -63,7 +68,7 @@ export function endpoints(app: Express) {
       const data = req.body;
       const user = await getUserByID(number);
       if (user === null) {
-        res.status(412).json({"message":"invalid id"}).end();
+        res.status(400).json({"message":"invalid id"}).end();
       } else {
 
       updateUserByID(number, data);
