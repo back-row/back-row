@@ -15,7 +15,14 @@ export function endpoints(app: Express) {
     try {
       const data = req.body;
 
-      if (data.usersname !== null && data.usersname !== undefined && data.usersemail !== null && data.usersemail !== undefined && data.userspassword !== null && data.userspassword !== undefined) {
+      if (
+        data.usersname !== null &&
+        data.usersname !== undefined &&
+        data.usersemail !== null &&
+        data.usersemail !== undefined &&
+        data.userspassword !== null &&
+        data.userspassword !== undefined
+      ) {
         await createUsers(data);
 
         res.status(201).end();
@@ -26,7 +33,6 @@ export function endpoints(app: Express) {
       console.error('Error creating user:', error);
       res.status(500).json({ error: 'An error occurred while creating user' });
     }
-
   });
 
   app.get('/users', async (req: Request, res: Response) => {
@@ -56,11 +62,7 @@ export function endpoints(app: Express) {
       const number = +req.params.id;
       const user = await getUserByID(number);
       if (user === null) {
-<<<<<<< HEAD
         res.status(412).json({ message: 'invalid id' }).end();
-=======
-        res.status(400).json({"message":"invalid id"}).end();
->>>>>>> 1fc1326 (Add check for usersname, usersemail & userspassword)
       } else {
         deletUsersById(number);
         res.status(204).end();
@@ -78,11 +80,7 @@ export function endpoints(app: Express) {
       const data = req.body;
       const user = await getUserByID(number);
       if (user === null) {
-<<<<<<< HEAD
         res.status(412).json({ message: 'invalid id' }).end();
-=======
-        res.status(400).json({"message":"invalid id"}).end();
->>>>>>> 1fc1326 (Add check for usersname, usersemail & userspassword)
       } else {
         updateUserByID(number, data);
         res.status(200).end();
