@@ -11,29 +11,21 @@ export function endpoints(app: Express) {
     res.status(200).end();
   });
 
-  app.post('/users', async (req: Request, res: Response) => {
+  app.post('/users', (req: Request, res: Response) => {
     try {
-      const data = req.body;
+      const data: {
+        usersid: number;
+        usersname: string | null;
+        usersemail: string | null;
+        userspassword: string | null;
+        userstotalscore: number | null;
+        userslevel: number | null;
+      } = req.body;
 
-      if (
-        data.usersname !== null &&
-        data.usersname !== undefined &&
-        data.usersemail !== null &&
-        data.usersemail !== undefined &&
-        data.userspassword !== null &&
-        data.userspassword !== undefined &&
-        data.usersname.length > 0 &&
-        data.usersemail.length > 0 &&
-        data.userspassword.length > 0
-      ) {
-        await createUsers(data);
-
-        res.status(201).end();
-      } else {
-        res.status(400).end();
-      }
+      createUsers(data);
+      res.status(201).end();
     } catch (error) {
-      console.error('Error creating user:', error);
+      console.log('Error creating user:', error);
       res.status(500).json({ error: 'An error occurred while creating user' });
     }
   });
@@ -82,14 +74,8 @@ export function endpoints(app: Express) {
 
       const data = req.body;
       const user = await getUserByID(number);
-      if (
-        user !== null &&
-        data.usersname !== null &&
-        data.usersname !== undefined &&
-        data.usersname.length > 0
-      ) {
-        await updateUserByID(number, data);
-        res.status(200).end();
+      if (user === null) {
+        res.status(412).json({ message: 'invalid id' }).end();
       } else {
         updateUserByID(number, data);
         res.status(200).end();
@@ -98,5 +84,11 @@ export function endpoints(app: Express) {
       console.log('Error updating user by id:', error);
       res.status(500).json({ error: 'An error occurred while updating user by id' });
     }
+  });
+
+  app.post('/player', (req, res) => {
+    const playerPosition: PlayerPosition = req.body;
+    getPlayerPosition(playerPosition);
+    res.status(200).end();
   });
 }
