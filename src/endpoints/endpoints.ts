@@ -7,8 +7,10 @@ import type { PlayerPosition } from '../game/player';
 export function endpoints(app: Express) {
   app.post('/player', (req, res) => {
     const playerPosition: PlayerPosition = req.body;
-    getPlayerPosition(playerPosition);
-    res.status(200).end();
+    console.log(playerPosition);
+    const completeMap = getPlayerPosition(playerPosition);
+    console.log('Player at end location: ' + completeMap);
+    res.json({ completeMap }).end();
   });
 
   app.post('/users', (req: Request, res: Response) => {
