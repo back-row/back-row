@@ -21,7 +21,10 @@ export function endpoints(app: Express) {
         data.usersemail !== null &&
         data.usersemail !== undefined &&
         data.userspassword !== null &&
-        data.userspassword !== undefined
+        data.userspassword !== undefined &&
+        data.usersname.length > 0 &&
+        data.usersemail.length > 0 &&
+        data.userspassword.length > 0
       ) {
         await createUsers(data);
 
