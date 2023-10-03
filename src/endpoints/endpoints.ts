@@ -5,29 +5,29 @@ import { getPlayerPosition } from '../game/player';
 import type { PlayerPosition } from '../game/player';
 
 export function endpoints(app: Express) {
-  app.post('/player', (req, res) => {
-    const playerPosition: PlayerPosition = req.body;
-    console.log(playerPosition);
-    const completeMap = getPlayerPosition(playerPosition);
-    console.log('Player at end location: ' + completeMap);
-    res.json({ completeMap }).end();
-  });
-
-  app.post('/users', (req: Request, res: Response) => {
+  app.post('/users', async (req: Request, res: Response) => {
     try {
-      const data: {
-        usersid: number;
-        usersname: string | null;
-        usersemail: string | null;
-        userspassword: string | null;
-        userstotalscore: number | null;
-        userslevel: number | null;
-      } = req.body;
+      const data = req.body;
 
-      createUsers(data);
-      res.status(201).end();
+      if (
+        data.usersname !== null &&
+        data.usersname !== undefined &&
+        data.usersemail !== null &&
+        data.usersemail !== undefined &&
+        data.userspassword !== null &&
+        data.userspassword !== undefined &&
+        data.usersname.length > 0 &&
+        data.usersemail.length > 0 &&
+        data.userspassword.length > 0
+      ) {
+        await createUsers(data);
+
+        res.status(201).end();
+      } else {
+        res.status(400).end();
+      }
     } catch (error) {
-      console.log('Error creating user:', error);
+      console.error('Error creating user:', error);
       res.status(500).json({ error: 'An error occurred while creating user' });
     }
   });
@@ -59,7 +59,7 @@ export function endpoints(app: Express) {
       const number = +req.params.id;
       const user = await getUserByID(number);
       if (user === null) {
-        res.status(412).json({ message: 'invalid id' }).end();
+        res.status(400).json({ message: 'invalid id' }).end();
       } else {
         deletUsersById(number);
         res.status(204).end();
@@ -76,11 +76,16 @@ export function endpoints(app: Express) {
 
       const data = req.body;
       const user = await getUserByID(number);
-      if (user === null) {
-        res.status(412).json({ message: 'invalid id' }).end();
-      } else {
-        updateUserByID(number, data);
+      if (
+        user !== null &&
+        data.usersname !== null &&
+        data.usersname !== undefined &&
+        data.usersname.length > 0
+      ) {
+        await updateUserByID(number, data);
         res.status(200).end();
+      } else {
+        res.status(400).end();
       }
     } catch (error) {
       console.log('Error updating user by id:', error);

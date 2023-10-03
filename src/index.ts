@@ -1,7 +1,8 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 const cors = require('cors');
 import dotenv from 'dotenv';
 import { endpoints } from './endpoints/endpoints';
+
 const bodyParser = require('body-parser');
 
 const corsOptions = {
@@ -17,7 +18,6 @@ const port = process.env.PORT;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
-
 endpoints(app);
 
 app.listen(port, () => {
