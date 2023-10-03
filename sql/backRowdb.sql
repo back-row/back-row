@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS users(
 	usersId SERIAL PRIMARY KEY,
-	usersName VARCHAR(255) NOT NULL,
-	usersEmail VARCHAR(255) NOT NULL,
+	usersName VARCHAR(255) NOT NULL UNIQUE,
+	usersEmail VARCHAR(255) NOT NULL UNIQUE,
 	usersPassword VARCHAR(255) NOT NULL,
 	usersTotalScore INT,
 	usersLevel INT
@@ -26,6 +26,9 @@ CREATE TABLE IF NOT EXISTS map(
 	mapId SERIAL PRIMARY KEY,
 	mapMap INT,
 	mapDifficulty INT,
+	mapIsQuiz BOOLEAN,
+	mapEndLocationRow INT,
+	mapEndLocationColumn INT,
 	mapQuizId INT REFERENCES quiz(quizId),
 	mapTutorialId INT REFERENCES tutorial(tutorialId)
 );

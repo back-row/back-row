@@ -8,14 +8,17 @@ datasource db {
 }
 
 model map {
-  mapid         Int         @id @default(autoincrement())
-  mapmap        Int?
-  mapdifficulty Int?
-  mapquizid     Int?
-  maptutorialid Int?
-  quiz          quiz?       @relation(fields: [mapquizid], references: [quizid], onDelete: NoAction, onUpdate: NoAction)
-  tutorial      tutorial?   @relation(fields: [maptutorialid], references: [tutorialid], onDelete: NoAction, onUpdate: NoAction)
-  userscore     userscore[]
+  mapid                 Int         @id @default(autoincrement())
+  mapmap                Int?
+  mapdifficulty         Int?
+  mapisquiz             Boolean?    @default(false)
+  mapquizid             Int?
+  mapendlocationrow     Int?
+  mapendlocationcolumn  Int?
+  maptutorialid         Int?
+  quiz                  quiz?       @relation(fields: [mapquizid], references: [quizid], onDelete: NoAction, onUpdate: NoAction)
+  tutorial              tutorial?   @relation(fields: [maptutorialid], references: [tutorialid], onDelete: NoAction, onUpdate: NoAction)
+  userscore             userscore[]
 }
 
 model quiz {
@@ -37,9 +40,9 @@ model tutorial {
 
 model users {
   usersid         Int         @id @default(autoincrement())
-  usersname       String?     @db.VarChar(255)
-  usersemail      String?     @db.VarChar(255)
-  userspassword   String?     @db.VarChar(255)
+  usersname       String      @db.VarChar(255) @unique
+  usersemail      String      @db.VarChar(255) @unique
+  userspassword   String      @db.VarChar(255)
   userstotalscore Int?
   userslevel      Int?
   userscore       userscore[]
