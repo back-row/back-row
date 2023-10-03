@@ -15,6 +15,7 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
