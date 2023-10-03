@@ -1,16 +1,23 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
+const cors = require('cors');
 import dotenv from 'dotenv';
 import { endpoints } from './endpoints/endpoints';
-const bodyParser = require('body-parser')
+
+const bodyParser = require('body-parser');
+
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  methods: 'POST'
+};
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT;
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors(corsOptions));
 endpoints(app);
 
 app.listen(port, () => {
