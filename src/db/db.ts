@@ -63,24 +63,7 @@ export async function updateUserByID(id: number, data: users) {
   await closeConnection();
 }
 
-export async function getMapLocations(id: number) {
-  let endLocation = { rows: 5, column: 5 };
-  try {
-    let map = await prisma.map.findUnique({ where: { mapid: id } });
-    await closeConnection();
-
-    if (map != null && map.mapendlocationrow != null && map.mapendlocationcolumn != null) {
-      endLocation.rows = map.mapendlocationrow;
-      endLocation.column = map.mapendlocationcolumn;
-    }
-    return endLocation;
-  } catch (e) {
-    console.log(e);
-    return endLocation;
-  }
-}
-
-async function closeConnection() {
+export async function closeConnection() {
   try {
     prisma.$disconnect;
   } catch (e) {
