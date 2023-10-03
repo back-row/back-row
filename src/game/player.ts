@@ -3,7 +3,8 @@ export type PlayerPosition = {
   column: number;
 };
 
-const completePosition: PlayerPosition = {
+const endLocation: PlayerPosition = {
+  //TODO: fetch from map
   row: 6,
   column: 6
 };
@@ -16,7 +17,5 @@ export function getPlayerPosition(playerPosition: PlayerPosition): Boolean {
 
 function checkMapComplete(playerPosition: PlayerPosition) {
   console.log('Checking map complete');
-  return (
-    playerPosition.row === completePosition.row && playerPosition.column === completePosition.column
-  );
+  return playerPosition.row === endLocation.row && playerPosition.column === endLocation.column;
 }
