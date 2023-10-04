@@ -63,6 +63,18 @@ export async function updateUserByID(id: number, data: users) {
   await closeConnection();
 }
 
+export async function getMap(id: number) {
+  console.log('Getting map with id: ', id, ' from db');
+  const map = await prisma.map.findUnique({
+    where: {
+      mapid: id
+    }
+  });
+  await closeConnection();
+
+  return map;
+}
+
 export async function closeConnection() {
   try {
     prisma.$disconnect;
