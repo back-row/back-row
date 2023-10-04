@@ -9,6 +9,7 @@ services:
       # - ~/docker/postgres:/var/lib/postgresql/data
         #create tables
       - ./sql/backRowdb.sql/:/docker-entrypoint-initdb.d/backRowdb.sql
+      - ./sql/quiz.sql/:/docker-entrypoint-initdb.d/quiz.sql
     environment:
       - POSTGRES_PASSWORD=dev
       - POSTGRES_USER=dev

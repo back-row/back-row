@@ -98,3 +98,14 @@ export async function closeConnection() {
     process.exit(1);
   }
 }
+
+ export async function getQuestion(id: number) {
+  console.log('Getting question with id: ', id, 'from db')
+  const question = await prisma.quiz.findUnique({
+    where: {
+      quizid: id
+    }
+  })
+  await closeConnection();
+   return question;
+ }
