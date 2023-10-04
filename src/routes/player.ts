@@ -5,7 +5,7 @@ import type { PlayerPosition } from '../game/player';
 const express = require('express');
 const router = express.Router();
 
-router.post('/player', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
   const playerPosition: PlayerPosition = req.body;
   let isMapComplete = await getPlayerPosition(playerPosition);
   console.log('Map complete: ' + isMapComplete);
