@@ -6,12 +6,13 @@ const prisma = new PrismaClient();
 export type PlayerPosition = {
   row: number;
   column: number;
+  mapId: number;
 };
 
 export async function getPlayerPosition(playerPosition: PlayerPosition): Promise<Boolean> {
+  //TODO get mapId from user
   console.log('Player position received ' + JSON.stringify(playerPosition));
-  console.log('Getting map endlocation');
-  const endLocation = await getMapLocations(1);
+  const endLocation = await getMapLocations(playerPosition.mapId);
   console.log('Map endlocation' + JSON.stringify(endLocation));
   return checkMapComplete(playerPosition, endLocation);
 }
@@ -22,7 +23,8 @@ function checkMapComplete(playerPosition: PlayerPosition, endLocation: PlayerPos
 }
 
 async function getMapLocations(id: number) {
-  let endLocation: PlayerPosition = { row: 5, column: 5 };
+  let endLocation: PlayerPosition = { row: 5, column: 5, mapId: 1 };
+  console.log('Getting map endlocation on map: ' + id);
   try {
     let map = await prisma.map.findUnique({ where: { mapid: id } });
     await closeConnection();
