@@ -70,6 +70,7 @@ export async function getMap(id: number) {
       mapid: id
     }
   });
+  await closeConnection();
 
   return map;
 }

@@ -14,10 +14,10 @@ router.get('/:id', async (req: Request, res: Response) => {
     if (!map) {
       throw new Error('Map not found');
     }
-    res.json(map);
+    res.json(map).end();
   } catch (e) {
     console.log(e);
-    res.status(404).send('Map not found');
+    res.status(404).send('Map not found').end();
   }
 });
 
