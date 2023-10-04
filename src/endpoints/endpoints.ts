@@ -5,7 +5,6 @@ import quiz from "../routes/quiz";
 import tutorial from "../routes/tutorial";
 import map from "../routes/map";
 
-
 export function endpoints(app: Express) {
 
 app.use("/users", users);

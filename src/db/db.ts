@@ -1,4 +1,4 @@
-import { PrismaClient, users } from '@prisma/client';
+import { PrismaClient, map, users } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -75,9 +75,20 @@ export async function getTutorialByMapId(id: number) {
   });
   await closeConnection();
   return map?.tutorial;
+
+export async function getMap(id: number) {
+  console.log('Getting map with id: ', id, ' from db');
+  const map = await prisma.map.findUnique({
+    where: {
+      mapid: id
+    }
+  });
+  await closeConnection();
+
+  return map;
 }
 
-async function closeConnection() {
+export async function closeConnection() {
   try {
     prisma.$disconnect;
   } catch (e) {
