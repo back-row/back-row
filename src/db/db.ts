@@ -75,6 +75,7 @@ export async function getTutorialByMapId(id: number) {
   });
   await closeConnection();
   return map?.tutorial;
+}
 
 export async function getMap(id: number) {
   console.log('Getting map with id: ', id, ' from db');
