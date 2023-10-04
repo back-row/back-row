@@ -9,7 +9,6 @@ datasource db {
 
 model map {
   mapid                 Int         @id @default(autoincrement())
-  mapmap                Int?
   mapdifficulty         Int?
   mapisquiz             Boolean?    @default(false)
   mapquizid             Int?
@@ -23,7 +22,7 @@ model map {
 
 model quiz {
   quizid            Int     @id @default(autoincrement())
-  quizquestion      String? @db.VarChar(255)
+  quizquestion      String? 
   quizanswer1       String? @db.VarChar(255)
   quizanswer2       String? @db.VarChar(255)
   quizanswer3       String? @db.VarChar(255)
@@ -33,8 +32,8 @@ model quiz {
 
 model tutorial {
   tutorialid          Int     @id @default(autoincrement())
-  tutorialdescription String? @db.VarChar(255)
-  tutorialhint        String? @db.VarChar(255)
+  tutorialdescription String?
+  tutorialhint        String? 
   map                 map[]
 }
 

@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS quiz(
 	quizId SERIAL PRIMARY KEY,
-	quizQuestion VARCHAR(255),
+	quizQuestion TEXT,
 	quizAnswer1 VARCHAR(255),
 	quizAnswer2 VARCHAR(255),
 	quizAnswer3 VARCHAR(255),
@@ -18,13 +18,12 @@ CREATE TABLE IF NOT EXISTS quiz(
 
 CREATE TABLE IF NOT EXISTS tutorial(
 	tutorialId SERIAL PRIMARY KEY,
-	tutorialDescription VARCHAR(255),
-	tutorialHint VARCHAR(255)
+	tutorialDescription TEXT,
+	tutorialHint TEXT
 );
 
 CREATE TABLE IF NOT EXISTS map(
 	mapId SERIAL PRIMARY KEY,
-	mapMap INT,
 	mapDifficulty INT,
 	mapIsQuiz BOOLEAN,
 	mapEndLocationRow INT,
