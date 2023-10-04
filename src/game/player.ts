@@ -8,15 +8,15 @@ export type PlayerPosition = {
   column: number;
 };
 
-const endLocation = await getMapLocations(1);
-
-export function getPlayerPosition(playerPosition: PlayerPosition): Boolean {
+export async function getPlayerPosition(playerPosition: PlayerPosition): Promise<Boolean> {
   console.log('Player position received ' + JSON.stringify(playerPosition));
-
-  return checkMapComplete(playerPosition);
+  console.log('Getting map endlocation');
+  const endLocation = await getMapLocations(1);
+  console.log('Map endlocation' + JSON.stringify(endLocation));
+  return checkMapComplete(playerPosition, endLocation);
 }
 
-function checkMapComplete(playerPosition: PlayerPosition) {
+function checkMapComplete(playerPosition: PlayerPosition, endLocation: PlayerPosition) {
   console.log('Checking map complete');
   return playerPosition.row === endLocation.row && playerPosition.column === endLocation.column;
 }
@@ -34,7 +34,7 @@ async function getMapLocations(id: number) {
     return endLocation;
   } catch (e) {
     console.log(e);
-    console.log("Couldn't find map end location, using default");
+    console.log("Couldn't find map end location, using default 5.5");
     return endLocation;
   }
 }
