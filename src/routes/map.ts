@@ -6,10 +6,14 @@ const router = express.Router();
 
 router.get('/:id', async (req: Request, res: Response) => {
   const id = +req.params.id;
-  console.log('new request for map id: ' + id);
+  console.log('New request for map id: ' + id);
 
   try {
     const map = await getMap(id);
+
+    if (!map) {
+      throw new Error('Map not found');
+    }
     res.json(map);
   } catch (e) {
     console.log(e);
