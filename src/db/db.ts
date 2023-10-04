@@ -3,7 +3,7 @@ import { PrismaClient, map, users } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export async function addAlice() {
-  await prisma.tutorial.create({
+  await prisma.map.create({
     data: {
       tutorialdescription: 'Alice',
       tutorialhint: 'test@tst.es'
@@ -61,6 +61,20 @@ export async function updateUserByID(id: number, data: users) {
   });
 
   await closeConnection();
+}
+
+export async function getTutorialByMapId(id: number) {
+  console.log('Getting tutorial by mapid: ' + id);
+  const map = await prisma.map.findUnique({
+    where: {
+      mapid: id
+    },
+    include: {
+      tutorial: true
+    }
+  });
+  await closeConnection();
+  return map?.tutorial;
 }
 
 export async function getMap(id: number) {
