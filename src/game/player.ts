@@ -10,7 +10,6 @@ export type PlayerPosition = {
 };
 
 export async function getPlayerPosition(playerPosition: PlayerPosition): Promise<Boolean> {
-  //TODO get mapId from user
   console.log('Player position received ' + JSON.stringify(playerPosition));
   const endLocation = await getMapLocations(playerPosition.mapId);
   console.log('Map endlocation' + JSON.stringify(endLocation));
