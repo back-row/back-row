@@ -2,17 +2,14 @@ import { Request, Response } from 'express';
 import { getPlayerPosition } from '../game/player';
 import type { PlayerPosition } from '../game/player';
 
-
-
-
 const express = require('express');
 const router = express.Router();
 
-router.post('/', (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
   const playerPosition: PlayerPosition = req.body;
-  getPlayerPosition(playerPosition);
-  res.status(200).end();
+  let isMapComplete = await getPlayerPosition(playerPosition);
+  console.log('Map complete: ' + isMapComplete);
+  res.json(isMapComplete).end();
 });
-  
 
 export default router;
