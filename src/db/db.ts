@@ -2,15 +2,6 @@ import { PrismaClient, map, users } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function addAlice() {
-  await prisma.map.create({
-    data: {
-      tutorialdescription: 'Alice',
-      tutorialhint: 'test@tst.es'
-    }
-  });
-  await closeConnection();
-}
 
 export async function createUsers(user: users) {
   await prisma.users.create({
