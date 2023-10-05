@@ -1,3 +1,3 @@
-INSERT INTO map (mapEndLocationColumn, mapEndLocationRow, mapQuizId)
+INSERT INTO map (mapEndLocationColumn, mapEndLocationRow)
 VALUES
-  (3, 7, 1);
+  (3, 7);
