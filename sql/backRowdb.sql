@@ -9,11 +9,7 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS quiz(
 	quizId SERIAL PRIMARY KEY,
-	quizQuestion TEXT,
-	quizAnswer1 VARCHAR(255),
-	quizAnswer2 VARCHAR(255),
-	quizAnswer3 VARCHAR(255),
-	quizCorrectAnswer INT
+	quizQuestion TEXT
 );
 
 CREATE TABLE IF NOT EXISTS tutorial(
