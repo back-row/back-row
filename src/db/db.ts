@@ -2,16 +2,6 @@ import { PrismaClient, map, users } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function addAlice() {
-  await prisma.map.create({
-    data: {
-      tutorialdescription: 'Alice',
-      tutorialhint: 'test@tst.es'
-    }
-  });
-  await closeConnection();
-}
-
 export async function createUsers(user: users) {
   await prisma.users.create({
     data: {
@@ -99,13 +89,13 @@ export async function closeConnection() {
   }
 }
 
- export async function getQuestion(id: number) {
-  console.log('Getting question with id: ', id, 'from db')
+export async function getQuestion(id: number) {
+  console.log('Getting question with id: ', id, 'from db');
   const question = await prisma.quiz.findUnique({
     where: {
       quizid: id
     }
-  })
+  });
   await closeConnection();
-   return question;
- }
+  return question;
+}
