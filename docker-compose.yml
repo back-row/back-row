@@ -10,6 +10,8 @@ services:
         #create tables
       - ./sql/backRowdb.sql/:/docker-entrypoint-initdb.d/backRowdb.sql
       - ./sql/quiz.sql/:/docker-entrypoint-initdb.d/quiz.sql
+       - ./sql/tutorialSql.sql/:/docker-entrypoint-initdb.d/tutorialSql.sql
+    environment:
     environment:
       - POSTGRES_PASSWORD=dev
       - POSTGRES_USER=dev
