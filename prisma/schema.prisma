@@ -23,10 +23,6 @@ model map {
 model quiz {
   quizid            Int     @id @default(autoincrement())
   quizquestion      String? 
-  quizanswer1       String? @db.VarChar(255)
-  quizanswer2       String? @db.VarChar(255)
-  quizanswer3       String? @db.VarChar(255)
-  quizcorrectanswer Int?
   map               map[]
 }
 

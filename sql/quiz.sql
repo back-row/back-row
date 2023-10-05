@@ -1,5 +1,4 @@
-INSERT INTO quiz (quizQuestion, quizAnswer1, quizAnswer2, quizAnswer3, quizCorrectAnswer)
+INSERT INTO quiz (quizQuestion)
 VALUES
-  ('Vilket nyckelord används för att deklarera konstanter i JavaScript/TypeScript?', 'var', 'let', 'const', 3);
-
+  ('{"question": "Vilket nyckelord används för att deklarera konstanter i JavaScript/TypeScript?", "choice1": "var", "anwer1": ["up", "right"], "choice2":"let","answer2":["down","up"], "choice3":"const", "answer3":["right","down"]}');
 
