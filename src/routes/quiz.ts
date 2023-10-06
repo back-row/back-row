@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import {getQuestion} from '../db/db';
+import { getQuestion } from '../db/db';
 
 const express = require('express');
 const router = express.Router();
@@ -9,7 +9,7 @@ router.get('/:id', async (req: Request, res: Response) => {
   console.log('New request for quiz id: ' + id);
 
   try {
-    const question = await getQuestion(id)
+    const question = await getQuestion(id);
 
     if (!question) {
       throw new Error('Question not found');

@@ -35,7 +35,7 @@ async function getMapLocations(id: number) {
     return endLocation;
   } catch (e) {
     console.log(e);
-    console.log("Couldn't find map end location, using default 5.5");
+    console.log('Couldn\'t find map end location, using default 5.5');
     return endLocation;
   }
 }
