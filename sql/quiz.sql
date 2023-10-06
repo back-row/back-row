@@ -1,4 +1,4 @@
 INSERT INTO quiz (quizQuestion)
 VALUES
-  ('{"question": "Vilket nyckelord används för att deklarera konstanter i JavaScript/TypeScript?", "choice1": "var", "answer1": ["up", "right"], "choice2":"let","answer2":["down","up"], "choice3":"const", "answer3":["right","down"]}');
+  ('{"question": "Which makes the player move to the treasure chest?", "choice1": "down , down, down, down, down, right , right , right , up , left", "answer1": ["down","down","down","down","down","right","right","right","up","left"], "choice2":"down, up, right, right, right, right, down, left","answer2":["down","up","right","right","right","right","down","left"], "choice3":"right, down, right, down, down, down, down, down", "answer3":["right","down","right","down","down", "down","down", "down"]}');
 
