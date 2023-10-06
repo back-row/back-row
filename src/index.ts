@@ -1,4 +1,5 @@
 import express, { Express } from 'express';
+
 const cors = require('cors');
 import dotenv from 'dotenv';
 import { endpoints } from './endpoints/endpoints';
