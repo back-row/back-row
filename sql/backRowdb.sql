@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS map(
 	mapId SERIAL PRIMARY KEY,
 	mapDifficulty INT,
 	mapIsQuiz BOOLEAN,
-	mapEndLocationRow INT,
-	mapEndLocationColumn INT,
+	mapEndLocationX INT,
+	mapEndLocationY INT,
 	mapQuizId INT REFERENCES quiz(quizId),
 	mapTutorialId INT REFERENCES tutorial(tutorialId)
 );

@@ -12,8 +12,8 @@ model map {
   mapdifficulty         Int?
   mapisquiz             Boolean?    @default(false)
   mapquizid             Int?
-  mapendlocationrow     Int?
-  mapendlocationcolumn  Int?
+  mapendlocationx     Int?
+  mapendlocationy  Int?
   maptutorialid         Int?
   quiz                  quiz?       @relation(fields: [mapquizid], references: [quizid], onDelete: NoAction, onUpdate: NoAction)
   tutorial              tutorial?   @relation(fields: [maptutorialid], references: [tutorialid], onDelete: NoAction, onUpdate: NoAction)
