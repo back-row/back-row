@@ -1,10 +1,6 @@
 INSERT INTO tutorial (tutorialDescription, tutorialHint)
 VALUES
-  ('You need to cross the bridge on the way to town. To move you here use the command 
-  hero.moveTo(), where X is the marker (number) of the place you want to mov.
-  For Example, to move to location 1 on the map, type the command hero.moveTo(1).',
-  'You need to cross the bridge on the way to town. To move you here use the command 
-  hero.moveTo(), where X is the marker (number) of the place you want to mov.
-  For Example, to move to location 1 on the map, type the command hero.moveTo(1).')
+  ('Help the player find the treasure. You must use the commands "up", "down", "right" and "left" to move the player one step in the that direction. For Example, to move the player one step to the right, use the command "right".',
+  'Every command moves the player one step. You need to move the player 2 steps to the right and 6 steps down to get to the treasure chest.')
 
  
