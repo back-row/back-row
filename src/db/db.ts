@@ -80,6 +80,14 @@ export async function getMap(id: number) {
   return map;
 }
 
+export async function getNumberOfMaps() {
+  const number = await prisma.map.count();
+  console.log('Getting number of maps: ', number, ' from db');
+  await closeConnection();
+
+  return number;
+}
+
 export async function closeConnection() {
   try {
     prisma.$disconnect;

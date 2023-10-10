@@ -1,8 +1,18 @@
 import { Request, Response } from 'express';
-import { getMap } from '../db/db';
+import { getMap, getNumberOfMaps } from '../db/db';
 
 const express = require('express');
 const router = express.Router();
+
+router.get('/count', async (req: Request, res: Response) => {
+  try {
+    const number = await getNumberOfMaps();
+    res.json(number);
+  } catch (error) {
+    console.log('Error getting number of maps:', error);
+    res.status(500).json({ error: 'An error occurred while getting number of maps' });
+  }
+});
 
 router.get('/:id', async (req: Request, res: Response) => {
   const id = +req.params.id;
