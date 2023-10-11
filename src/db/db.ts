@@ -2,7 +2,6 @@ import { PrismaClient, map, users } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-
 export async function createUsers(user: users) {
   await prisma.users.create({
     data: {
@@ -29,6 +28,16 @@ export async function getUserByID(id: number) {
     }
   });
 
+  return user;
+}
+
+export async function getUserByName(name: string) {
+  const user = await prisma.users.findUnique({
+    where: {
+      usersname: name
+    }
+  });
+  await closeConnection();
   return user;
 }
 
