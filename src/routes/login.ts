@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { authenticateToken, generateAccessToken } from '../endpoints/auth';
+import { generateAccessToken } from '../endpoints/auth';
 import { getUserByName } from '../db/db';
 import { users } from '@prisma/client';
 
@@ -22,11 +22,4 @@ router.post('/', async (req: Request, res: Response) => {
   res.cookie('token', token, { httpOnly: true }).status(200).send('Logged in successfully');
 });
 
-// router.get('/', authenticateToken, (req: Request, res: Response) => {
-//   // ...
-//   console.log('valid');
-//   res.send(req.user);
-//   // ...
-// });
-//
 export default router;

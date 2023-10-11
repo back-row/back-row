@@ -1,11 +1,10 @@
 const jwt = require('jsonwebtoken');
-import { Request, Response, NextFunction } from 'express';
 
-export function generateAccessToken(username: any) {
-  return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+export function generateAccessToken(userId: any) {
+  return jwt.sign(userId, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
 }
 
-export function authenticateToken(req: Request, res: Response, next: NextFunction) {
+export function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
