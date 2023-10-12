@@ -19,7 +19,7 @@ router.post('/', async (req: Request, res: Response) => {
   }
 
   const token = generateAccessToken({ userid: user.usersid });
-  res.cookie('token', token, { httpOnly: true }).status(200).send('Logged in successfully');
+  res.header('Authorization', token).status(200).send('Logged in successfully');
 });
 
 export default router;
