@@ -45,7 +45,8 @@ export async function getUserByIDNoPassword(id: number) {
     usersname: user?.usersname,
     usersemail: user?.usersemail,
     userstotalscore: user?.userstotalscore,
-    userslevel: user?.userslevel
+    userslevel: user?.userslevel,
+    usersimage: user?.usersimage
   };
   return userNoPassword;
 }
