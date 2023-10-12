@@ -40,6 +40,7 @@ model users {
   userspassword   String      @db.VarChar(255)
   userstotalscore Int?
   userslevel      Int?
+  usersimage      String      @db.VarChar(255)
   userscore       userscore[]
 }
 

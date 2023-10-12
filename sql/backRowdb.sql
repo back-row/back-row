@@ -4,7 +4,8 @@ CREATE TABLE IF NOT EXISTS users(
 	usersEmail VARCHAR(255) NOT NULL UNIQUE,
 	usersPassword VARCHAR(255) NOT NULL,
 	usersTotalScore INT,
-	usersLevel INT
+	usersLevel INT,
+	usersImage VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS quiz(
