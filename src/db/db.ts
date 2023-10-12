@@ -10,7 +10,8 @@ export async function createUsers(user: users) {
       usersemail: user.usersemail,
       userspassword: user.userspassword,
       userstotalscore: 0,
-      userslevel: 1
+      userslevel: 1,
+      usersimage: user.usersimage
     }
   });
   await closeConnection();
@@ -28,7 +29,7 @@ export async function getUserByID(id: number) {
       usersid: id
     }
   });
-
+  console.log(user);
   return user;
 }
 
