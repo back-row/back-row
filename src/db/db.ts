@@ -2,7 +2,6 @@ import { PrismaClient, map, users } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-
 export async function createUsers(user: users) {
   await prisma.users.create({
     data: {
@@ -30,6 +29,34 @@ export async function getUserByID(id: number) {
     }
   });
   console.log(user);
+  return user;
+}
+
+export async function getUserByIDNoPassword(id: number) {
+  const user = await prisma.users.findUnique({
+    where: {
+      usersid: id
+    }
+  });
+  await closeConnection();
+
+  const userNoPassword = {
+    usersid: user?.usersid,
+    usersname: user?.usersname,
+    usersemail: user?.usersemail,
+    userstotalscore: user?.userstotalscore,
+    userslevel: user?.userslevel
+  };
+  return userNoPassword;
+}
+
+export async function getUserByName(name: string) {
+  const user = await prisma.users.findUnique({
+    where: {
+      usersname: name
+    }
+  });
+  await closeConnection();
   return user;
 }
 

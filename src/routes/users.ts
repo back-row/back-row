@@ -1,11 +1,16 @@
-import { createUsers, getUserByID, getAllUsers, updateUserByID } from '../db/db';
+import {
+  createUsers,
+  getUserByID,
+  getAllUsers,
+  updateUserByID,
+  getUserByIDNoPassword
+} from '../db/db';
 import { Request, Response } from 'express';
 import { deletUsersById } from '../db/db';
-
+import { authenticateToken } from '../endpoints/auth';
 
 const express = require('express');
 const router = express.Router();
-
 
 router.post('/', async (req: Request, res: Response) => {
   try {
@@ -34,7 +39,17 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', authenticateToken, async (req: Request, res: Response) => {
+  try {
+    const user = await getUserByIDNoPassword(req.user.userid);
+    res.json(user).end();
+  } catch (error) {
+    console.log('Error getting user:', error);
+    res.status(500).json({ error: 'An error occurred while getting user' });
+  }
+});
+
+router.get('/all', async (req: Request, res: Response) => {
   try {
     const users = await getAllUsers();
     res.json(users).end();
