@@ -87,18 +87,13 @@ router.delete('/:id', async (req: Request, res: Response) => {
   }
 });
 
-router.put('/:id/', async (req: Request, res: Response) => {
+router.put('/', authenticateToken, async (req: Request, res: Response) => {
   try {
-    const number = +req.params.id;
+    const number = req.user.userid;
 
     const data = req.body;
     const user = await getUserByID(number);
-    if (
-      user !== null &&
-      data.usersname !== null &&
-      data.usersname !== undefined &&
-      data.usersname.length > 0
-    ) {
+    if (user !== null && data.name !== null && data.name !== undefined && data.name.length > 0) {
       await updateUserByID(number, data);
       res.status(200).end();
     } else {

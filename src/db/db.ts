@@ -70,13 +70,17 @@ export async function deletUsersById(id: number) {
   await closeConnection();
 }
 
-export async function updateUserByID(id: number, data: users) {
+export async function updateUserByID(id: number, data: any) {
   const users = await prisma.users.update({
     where: {
       usersid: id
     },
     data: {
-      usersname: data.usersname
+      usersname: data.name,
+      usersemail: data.email,
+      userslevel: data.level,
+      userstotalscore: data.score,
+      usersimage: data.avatar
     }
   });
 
