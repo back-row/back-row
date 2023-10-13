@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { authenticateToken } from '../endpoints/auth';
-import { getUserScore, createScore, updateScore } from '../db/db';
+import { getUserScore, createScore, updateScore, updateUserTotalScore } from '../db/db';
 import { userscore } from '@prisma/client';
 
 const express = require('express');
@@ -28,5 +28,7 @@ router.post('/', authenticateToken, async (req: Request, res: Response) => {
   } catch (e) {
     console.log(e);
   }
+
+  updateUserTotalScore(user);
 });
 export default router;

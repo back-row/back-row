@@ -174,3 +174,30 @@ export async function getUserScore(user: number, map: number) {
   await closeConnection();
   return userScore;
 }
+
+export async function updateUserTotalScore(userId: number) {
+  const user = await prisma.users.findUnique({
+    where: { usersid: userId },
+    include: {
+      userscore: {
+        select: { userscorescore: true }
+      }
+    }
+  });
+
+  if (user) {
+    if (user.userscore) {
+      const totalScore = user.userscore.reduce((sum, score) => {
+        if (score.userscorescore !== null && score.userscorescore !== undefined) {
+          return sum + score.userscorescore;
+        } else {
+          return sum;
+        }
+      }, 0);
+      await prisma.users.update({
+        where: { usersid: userId },
+        data: { userstotalscore: totalScore }
+      });
+    }
+  }
+}
