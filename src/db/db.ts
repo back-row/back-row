@@ -146,6 +146,13 @@ export async function insertScore(user, map, score) {}
 
 export async function updateScore(user, map, score) {}
 
-export async function getUserScore(user, map): Promise<userscore> {
+export async function getUserScore(user: number, map: number) {
+  const userScore = await prisma.userscore.findFirst({
+    where: {
+      userscoreusersid: user,
+      userscoremapid: map
+    }
+  });
+  await closeConnection();
   return userScore;
 }
