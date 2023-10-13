@@ -141,3 +141,11 @@ export async function getQuestion(id: number) {
   await closeConnection();
   return question;
 }
+
+export async function insertScore(user, map, score) {}
+
+export async function updateScore(user, map, score) {}
+
+export async function getUserScore(user, map): Promise<userscore> {
+  return userScore;
+}

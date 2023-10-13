@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import { authenticateToken } from '../endpoints/auth';
+import { getUserScore, insertScore, updateScore } from '../db/db';
+import { userscore } from '@prisma/client';
 
 const express = require('express');
 const router = express.Router();
@@ -9,12 +11,12 @@ router.post('/', authenticateToken, async (req: Request, res: Response) => {
   const map = req.body.map;
   const score = req.body.score;
 
-  const userScore = await getUserScore(user, map);
+  const userScore: userscore = await getUserScore(user, map);
 
   if (!userScore) {
     await insertScore(user, map, score);
     res.status(201).send('Score inserted').end();
-  } else if (userScore.score < score) {
+  } else if (userScore.userscorescore! < score) {
     await updateScore(user, map, score);
     res.status(200).send('Score updated').end();
   }
