@@ -11,15 +11,22 @@ router.post('/', authenticateToken, async (req: Request, res: Response) => {
   const map = req.body.map;
   const score = req.body.score;
 
-  const userScore: userscore | null = await getUserScore(user, map);
-
-  if (!userScore) {
-    await createScore(user, map, score);
-    res.status(201).send('Score inserted').end();
-  } else if (userScore.userscorescore! < score) {
-    await updateScore(userScore, map);
-    res.status(200).send('Score updated').end();
+  try {
+    const userScore: userscore | null = await getUserScore(user, map);
+    if (!userScore) {
+      await createScore(user, map, score);
+      console.log('Score inserted');
+      res.status(201).send('Score inserted').end();
+    } else if (userScore.userscorescore! < score) {
+      console.log('Score updated');
+      await updateScore(userScore.userscoreid, map);
+      res.status(200).send('Score updated').end();
+    } else {
+      console.log('Score not updated');
+      res.status(200).send('Score not updated').end();
+    }
+  } catch (e) {
+    console.log(e);
   }
-  res.status(200).send('Score not updated').end();
 });
 export default router;

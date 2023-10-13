@@ -153,10 +153,10 @@ export async function createScore(user: number, map: number, score: number) {
   await closeConnection();
 }
 
-export async function updateScore(userscore: userscore, score: number) {
+export async function updateScore(userscore: number, score: number) {
   await prisma.userscore.update({
     where: {
-      userscoreid: userscore.userscoreid
+      userscoreid: userscore
     },
     data: {
       userscorescore: score
