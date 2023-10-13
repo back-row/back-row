@@ -87,9 +87,9 @@ router.delete('/:id', async (req: Request, res: Response) => {
   }
 });
 
-router.put('/:id/', async (req: Request, res: Response) => {
+router.put('/', authenticateToken, async (req: Request, res: Response) => {
   try {
-    const number = +req.params.id;
+    const number = req.user.userid;
 
     const data = req.body;
     const user = await getUserByID(number);
