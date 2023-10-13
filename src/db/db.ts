@@ -1,4 +1,4 @@
-import { PrismaClient, map, users } from '@prisma/client';
+import { PrismaClient, map, users, userscore } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -142,9 +142,27 @@ export async function getQuestion(id: number) {
   return question;
 }
 
-export async function insertScore(user, map, score) {}
+export async function createScore(user: number, map: number, score: number) {
+  await prisma.userscore.create({
+    data: {
+      userscoreusersid: user,
+      userscoremapid: map,
+      userscorescore: score
+    }
+  });
+  await closeConnection();
+}
 
-export async function updateScore(user, map, score) {}
+export async function updateScore(userscore: userscore, score: number) {
+  await prisma.userscore.update({
+    where: {
+      userscoreid: userscore.userscoreid
+    },
+    data: {
+      userscorescore: score
+    }
+  });
+}
 
 export async function getUserScore(user: number, map: number) {
   const userScore = await prisma.userscore.findFirst({

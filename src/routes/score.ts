@@ -17,7 +17,7 @@ router.post('/', authenticateToken, async (req: Request, res: Response) => {
     await createScore(user, map, score);
     res.status(201).send('Score inserted').end();
   } else if (userScore.userscorescore! < score) {
-    await updateScore(user, map, score);
+    await updateScore(userScore, map);
     res.status(200).send('Score updated').end();
   }
   res.status(200).send('Score not updated').end();
