@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 const corsOptions = {
   origin: ['http://localhost:5173', 'http://localhost:8000'],
-  methods: ['POST', 'GET'],
+  methods: ['POST', 'GET', 'PUT'],
   exposedHeaders: ['Authorization'],
   credentials: true
 };

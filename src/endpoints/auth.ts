@@ -10,7 +10,7 @@ declare global {
 }
 
 export function generateAccessToken(userId: any) {
-  return jwt.sign(userId, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+  return jwt.sign(userId, process.env.TOKEN_SECRET, { expiresIn: '2h' });
 }
 
 export function authenticateToken(req: Request, res: Response, next: NextFunction) {
