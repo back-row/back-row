@@ -1,13 +1,38 @@
-import { PrismaClient, map, users, userscore } from '@prisma/client';
+import { PrismaClient, users } from '@prisma/client';
+import { hashPassword } from '../endpoints/auth';
 
 const prisma = new PrismaClient();
 
+export async function createAdmin() {
+  const admin = await prisma.users.findUnique({
+    where: { usersname: 'admin' }
+  });
+
+  if (!admin) {
+    console.log('Admin user does not exist, creating admin user');
+    try {
+      await prisma.users.create({
+        data: {
+          usersname: 'admin',
+          usersemail: 'admin@admin.com',
+          userspassword: await hashPassword(process.env.ADMIN_PASSWORD!),
+          userstotalscore: 0,
+          userslevel: 1,
+          usersimage: 'ghoul'
+        }
+      });
+    } catch (e) {
+      console.error('Error creating admin:', e);
+    }
+  }
+}
 export async function createUsers(user: users) {
+  const encryptedPassword = await hashPassword(user.userspassword);
   await prisma.users.create({
     data: {
       usersname: user.usersname,
       usersemail: user.usersemail,
-      userspassword: user.userspassword,
+      userspassword: encryptedPassword,
       userstotalscore: 0,
       userslevel: 1,
       usersimage: user.usersimage
