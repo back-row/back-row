@@ -1,13 +1,15 @@
 import { PrismaClient, map, users, userscore } from '@prisma/client';
+import { hashPassword } from '../endpoints/auth';
 
 const prisma = new PrismaClient();
 
 export async function createUsers(user: users) {
+  const encryptedPassword = await hashPassword(user.userspassword);
   await prisma.users.create({
     data: {
       usersname: user.usersname,
       usersemail: user.usersemail,
-      userspassword: user.userspassword,
+      userspassword: encryptedPassword,
       userstotalscore: 0,
       userslevel: 1,
       usersimage: user.usersimage

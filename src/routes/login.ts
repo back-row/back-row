@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { generateAccessToken } from '../endpoints/auth';
+import { comparePassword, generateAccessToken } from '../endpoints/auth';
 import { getUserByName } from '../db/db';
 import { users } from '@prisma/client';
 
@@ -10,11 +10,9 @@ router.post('/', async (req: Request, res: Response) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  //TODO: crypt password checking db
-
   const user: users | null = await getUserByName(username);
 
-  if (user == null || user.userspassword != password) {
+  if (user == null || !comparePassword(password, user.userspassword)) {
     return res.status(401).end();
   }
 
