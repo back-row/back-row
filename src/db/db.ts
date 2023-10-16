@@ -201,3 +201,17 @@ export async function updateUserTotalScore(userId: number) {
     }
   }
 }
+
+export async function getHighScores() {
+  const highScores = await prisma.users.findMany({
+    take: 10,
+    orderBy: {
+      userstotalscore: 'desc'
+    },
+    select: {
+      usersname: true,
+      userstotalscore: true
+    }
+  });
+  return highScores;
+}
