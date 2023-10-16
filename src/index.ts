@@ -3,6 +3,7 @@ import express, { Express } from 'express';
 const cors = require('cors');
 import dotenv from 'dotenv';
 import { endpoints } from './endpoints/endpoints';
+import { createAdmin } from './db/db';
 
 const bodyParser = require('body-parser');
 
@@ -23,6 +24,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
 endpoints(app);
 
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-});
+// Call createAdmin here to run it at startup
+createAdmin()
+  .then(() => {
+    // The function has executed successfully, so we can start the server
+    app.listen(port, () => {
+      console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Error creating admin:', error);
+    // Handle the error as needed, such as terminating the application
+  });
