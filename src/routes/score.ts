@@ -1,6 +1,12 @@
 import { Request, Response } from 'express';
 import { authenticateToken } from '../endpoints/auth';
-import { getUserScore, createScore, updateScore, updateUserTotalScore } from '../db/db';
+import {
+  getUserScore,
+  createScore,
+  updateScore,
+  updateUserTotalScore,
+  getHighScores
+} from '../db/db';
 import { userscore } from '@prisma/client';
 
 const express = require('express');
@@ -31,4 +37,13 @@ router.post('/', authenticateToken, async (req: Request, res: Response) => {
 
   updateUserTotalScore(user);
 });
+
+router.get('/', async (req: Request, res: Response) => {
+  try {
+    res.json(await getHighScores()).end();
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 export default router;
