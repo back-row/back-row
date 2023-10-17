@@ -25,6 +25,9 @@ CREATE TABLE IF NOT EXISTS map(
 	mapIsQuiz BOOLEAN,
 	mapEndLocationX INT,
 	mapEndLocationY INT,
+  mapStartLocationX INT,
+  mapStartLocationY INT,
+  mapJSON TEXT,
 	mapQuizId INT REFERENCES quiz(quizId),
 	mapTutorialId INT REFERENCES tutorial(tutorialId)
 );
