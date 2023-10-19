@@ -12,7 +12,14 @@ VALUES
 
   INSERT INTO quiz (quizQuestion)
 VALUES
-  ('{"question": "Which combination of commands makes the player move to the treasure chest?", "choice1": "down , down, down, down, down, right , right , right , up , left", "answer1": ["down","down","down","down","down","right","right","right","up","left"], "choice2":"down, up, right, right, right, right, down, left","answer2":["down","up","right","right","right","right","down","left"], "choice3":"right, down, right, down, down, down, down, down", "answer3":["right","down","right","down","down", "down","down", "down"]}');
+  ('{"question": "Which combination of commands makes the player move to the treasure chest?",
+      "choice1": "down , down, down, down, down, right and so one repeating  ",
+      "answer1": ["down","down","down","down","down","right","right","right","up","left"],
+      "choice2":"down, up, right, right, right, right, down,up  and so one repeating ",
+      "answer2":["down","up","right","right","right","right","down","left"],
+      "choice3":"down, down, right, right, up, up, right and so one repeating ",
+      "answer3":["down", "down", "right", "right", "up", "up", "right", "right", "down", "down", "right", "right", "up", "up", "right", "right", "down", "down", "down", "down", "down", "left", "left", "up", "up", "left", "left", "down", "down", "left", "left", "up", "up", "left", "left", "down", "down"]}'
+       );
 
   INSERT INTO quiz (quizQuestion)
 VALUES
