@@ -1,6 +1,14 @@
 INSERT INTO quiz (quizQuestion)
 VALUES
-  ('{"question": "Which combination of commands makes the player move to the treasure chest?", "choice1": "down , down, down, down, down, right , right , right , up , left", "answer1": ["down","down","down","down","down","right","right","right","up","left"], "choice2":"down, up, right, right, right, right, down, left","answer2":["down","up","right","right","right","right","down","left"], "choice3":"right, down, right, down, down, down, down, down", "answer3":["right","down","right","down","down", "down","down", "down"]}');
+    ('{
+    "question": "Which combination of commands makes the player move to the princess?",
+    "choice1": "down, down, right, right, up",
+    "answer1": ["down", "down", "right", "right", "up"],
+    "choice2": "right, right, right, down, down, down, down, left, left",
+    "answer2": ["right", "right", "right", "down", "down", "down", "down", "left", "left"],
+    "choice3": "right, right, down, right, right, down, up, right, right, right",
+    "answer3": ["right", "right", "down", "right", "right", "down", "up", "right", "right", "right"]
+  }');
 
   INSERT INTO quiz (quizQuestion)
 VALUES
