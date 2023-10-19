@@ -9,3 +9,11 @@ VALUES
 INSERT INTO map (mapEndLocationx, mapEndLocationy, mapstartlocationx, mapstartlocationy, mapJSON, mapQuizId, mapTutorialId)
 VALUES
   (790, 200, 80, 250, 'mapThree', (SELECT quizid from quiz WHERE quizid=3), (SELECT tutorialId from tutorial WHERE tutorialId=3));
+
+INSERT INTO map (mapEndLocationx, mapEndLocationy, mapstartlocationx, mapstartlocationy, mapJSON, mapQuizId, mapTutorialId)
+VALUES
+  (230, 400, 80, 90, 'mapFour', (SELECT quizid from quiz WHERE quizid=4), (SELECT tutorialId from tutorial WHERE tutorialId=4));
+
+INSERT INTO map (mapEndLocationx, mapEndLocationy, mapstartlocationx, mapstartlocationy, mapJSON, mapQuizId, mapTutorialId)
+VALUES
+  (695, 280, 71, 291, 'mapFive', (SELECT quizid from quiz WHERE quizid=5), (SELECT tutorialId from tutorial WHERE tutorialId=5));
