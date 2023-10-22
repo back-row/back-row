@@ -20,7 +20,7 @@ VALUES
 coin += 1 
 Alternatively, you can increment the coin variable with: 
 coin = coin + 1
-The executioner is known to be easily swayed by the glint of gold. Once you have amassed the required number of coins, approach the intimidating executioner and present them as an offering',
+The executioner is known to be easily swayed by the glint of gold. Once you have amassed the required number of coins, approach the intimidating executioner and present them as an offering with the bribe() function',
   'You need to collect 4 coins to bribe the executioner. You can do this by moving to the coins and updating the coin count using the command coin += 1. Alternatively, you can increment the coin variable with coin = coin + 1.');
 
 INSERT INTO tutorial (tutorialDescription, tutorialHint)
