@@ -1,18 +1,19 @@
 
 INSERT INTO tutorial (tutorialDescription, tutorialHint)
 VALUES
-  ('Help the player find the treasure. You must use the commands "hero.up()", "hero.down()", "hero.right()" and "hero.left()" to move the player one step in that direction. For example, to move the player one step to the right, use the command "hero.right()".',
-  'Every command moves the player one step. You need to move the player 2 steps to the right and 6 steps down to get to the treasure chest.');
+  ('The castle is designed like a labyrinth with narrow corridors and various interconnected rooms. Be prepared to explore and chart a path through this maze.
+  Help the player find the "Princess". You must use the commands "hero.up()", "hero.down()", "hero.right()" and "hero.left()" to move the player one step in that direction. For example, to move the player one step to the right, use the command "hero.right()".',
+  'Every command moves the player one step. You need to move the player 3 steps to the right, 4 steps down and 2 steps right to get to the princess.');
 
 INSERT INTO tutorial (tutorialDescription, tutorialHint)
 VALUES
-  ('Help the player find the treasure. You must use the commands "hero.up()", "hero.down()", "hero.right()" and "hero.left()" to move the player one step in that direction. For example, to move the player one step to the right, use the command "hero.right()".',
-  'Every command moves the player one step. You need to move the player 2 steps to the right and 6 steps down to get to the treasure chest.');
+  ('Help the player find the princess. You must use the commands "hero.up()", "hero.down()", "hero.right()" and "hero.left()" to move the player one step in that direction. For example, to move the player one step to the right, use the command "hero.right()".',
+  'Every command moves the player one step. You will need to move the player 2 steps to the down,2 steps down to right and then 2 steps to up and repeat this pattern until you reach the princess.');
 
 INSERT INTO tutorial (tutorialDescription, tutorialHint)
 VALUES
-  ('Help the player find the treasure. You must use the commands "hero.up()", "hero.down()", "hero.right()" and "hero.left()" to move the player one step in that direction. For example, to move the player one step to the right, use the command "hero.right()".',
-  'Every command moves the player one step. You need to move the player 2 steps to the right and 6 steps down to get to the treasure chest.');
+  ('Help the player find the princess. You must use the commands "hero.up()", "hero.down()", "hero.right()" and "hero.left()" to move the player one step in that direction. For example, to move the player one step to the right, use the command "hero.right()".',
+  'Every command moves the player one step. You will need to move the player 2 steps to the down,4 steps down to right, then 2 steps to up and 2 to right to get reach the princess.');
 
 INSERT INTO tutorial (tutorialDescription, tutorialHint)
 VALUES
