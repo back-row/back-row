@@ -5,7 +5,8 @@ import {
   createScore,
   updateScore,
   updateUserTotalScore,
-  getHighScores
+  getHighScores,
+  getAllMapScores
 } from '../db/db';
 import { userscore } from '@prisma/client';
 
@@ -43,6 +44,15 @@ router.get('/', async (req: Request, res: Response) => {
     res.json(await getHighScores()).end();
   } catch (e) {
     console.log(e);
+  }
+});
+
+router.get('/allmaps', authenticateToken, async (req: Request, res: Response) => {
+  const user = req.user.userid;
+  try {
+    res.json(await getAllMapScores(user)).end();
+  } catch (e) {
+    console.log('Failed to get all maps: ' + e);
   }
 });
 
