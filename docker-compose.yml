@@ -4,6 +4,8 @@ services:
   backrow:
     build:
       context: .
+    depends_on:
+      - backrowDB
     ports:
       - 8000:8000
     environment:
