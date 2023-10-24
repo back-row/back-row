@@ -240,3 +240,15 @@ export async function getHighScores() {
   });
   return highScores;
 }
+export async function getAllMapScores(userId: number) {
+  const allMapScores = await prisma.userscore.findMany({
+    where: {
+      userscoreusersid: userId
+    },
+    select: {
+      userscoremapid: true,
+      userscorescore: true
+    }
+  });
+  return allMapScores;
+}
