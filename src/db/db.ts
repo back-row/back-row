@@ -9,6 +9,7 @@ export async function createAdmin() {
   });
 
   if (!admin) {
+    console.log('Admin user does not exist, creating admin user');
     try {
       await prisma.users.create({
         data: {
