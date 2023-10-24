@@ -2,7 +2,8 @@ version: '3.9'
 
 services:
   backrow:
-    image: test
+    build:
+      context: .
     ports:
       - 8000:8000
     environment:
