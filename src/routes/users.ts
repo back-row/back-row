@@ -9,7 +9,7 @@ import { Request, Response } from 'express';
 import { deletUsersById } from '../db/db';
 import { authenticateToken } from '../endpoints/auth';
 
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 router.post('/', async (req: Request, res: Response) => {
@@ -44,17 +44,17 @@ router.get('/', authenticateToken, async (req: Request, res: Response) => {
     const user = await getUserByIDNoPassword(req.user.userid);
     res.json(user).end();
   } catch (error) {
-    console.log('Error getting user:', error);
+    console.error('Error getting user:', error);
     res.status(500).json({ error: 'An error occurred while getting user' });
   }
 });
 
-router.get('/all', async (req: Request, res: Response) => {
+router.get('/all', async (_req: Request, res: Response) => {
   try {
     const users = await getAllUsers();
     res.json(users).end();
   } catch (error) {
-    console.log('Error getting all users:', error);
+    console.error('Error getting all users:', error);
     res.status(500).json({ error: 'An error occurred while getting all users' });
   }
 });
@@ -66,7 +66,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 
     res.send(user);
   } catch (error) {
-    console.log('Error getting user by id:', error);
+    console.error('Error getting user by id:', error);
     res.status(500).json({ error: 'An error occurred while getting user by id' });
   }
 });
@@ -78,11 +78,11 @@ router.delete('/:id', async (req: Request, res: Response) => {
     if (user === null) {
       res.status(400).json({ message: 'invalid id' }).end();
     } else {
-      deletUsersById(number);
+      await deletUsersById(number);
       res.status(204).end();
     }
   } catch (error) {
-    console.log('Error deleting user by id:', error);
+    console.error('Error deleting user by id:', error);
     res.status(500).json({ error: 'An error occurred while deleting user by id' });
   }
 });
@@ -100,7 +100,7 @@ router.put('/', authenticateToken, async (req: Request, res: Response) => {
       res.status(400).end();
     }
   } catch (error) {
-    console.log('Error updating user by id:', error);
+    console.error('Error updating user by id:', error);
     res.status(500).json({ error: 'An error occurred while updating user by id' });
   }
 });

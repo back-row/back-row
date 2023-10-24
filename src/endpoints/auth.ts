@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 
 declare global {
   namespace Express {
@@ -15,17 +15,12 @@ export function generateAccessToken(userId: any) {
 }
 
 export function authenticateToken(req: Request, res: Response, next: NextFunction) {
-  const authHeader = req.headers['authorization'];
-
-  const token = authHeader;
+  const token = req.headers['authorization'];
 
   if (token == null) return res.sendStatus(401);
-
   jwt.verify(token, process.env.TOKEN_SECRET as string, (err: any, user: any) => {
     if (err) return res.sendStatus(403);
-
     req.user = user;
-
     next();
   });
 }

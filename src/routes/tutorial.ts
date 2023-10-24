@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/:id', async (req: Request, res: Response) => {
   const id = +req.params.id;
-
   console.log('New request for tutorial by mapid: ' + id + ' received.');
   try {
     const tutorial = await getTutorialByMapId(id);
@@ -16,7 +15,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
     res.json(tutorial).end();
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(500).send('Internal Server Error').end();
   }
 });

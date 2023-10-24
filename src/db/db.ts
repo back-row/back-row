@@ -9,7 +9,6 @@ export async function createAdmin() {
   });
 
   if (!admin) {
-    console.log('Admin user does not exist, creating admin user');
     try {
       await prisma.users.create({
         data: {
@@ -26,6 +25,7 @@ export async function createAdmin() {
     }
   }
 }
+
 export async function createUsers(user: users) {
   const encryptedPassword = await hashPassword(user.userspassword);
   await prisma.users.create({
@@ -42,19 +42,15 @@ export async function createUsers(user: users) {
 }
 
 export async function getAllUsers() {
-  const users = await prisma.users.findMany();
-  console.log('This is printing out all users', users);
-  return users;
+  return await prisma.users.findMany();
 }
 
 export async function getUserByID(id: number) {
-  const user = await prisma.users.findUnique({
+  return await prisma.users.findUnique({
     where: {
       usersid: id
     }
   });
-  console.log(user);
-  return user;
 }
 
 export async function getUserByIDNoPassword(id: number) {
@@ -65,7 +61,7 @@ export async function getUserByIDNoPassword(id: number) {
   });
   await closeConnection();
 
-  const userNoPassword = {
+  return {
     usersid: user?.usersid,
     usersname: user?.usersname,
     usersemail: user?.usersemail,
@@ -73,7 +69,6 @@ export async function getUserByIDNoPassword(id: number) {
     userslevel: user?.userslevel,
     usersimage: user?.usersimage
   };
-  return userNoPassword;
 }
 
 export async function getUserByName(name: string) {
@@ -113,7 +108,6 @@ export async function updateUserByID(id: number, data: any) {
 }
 
 export async function getTutorialByMapId(id: number) {
-  console.log('Getting tutorial by mapid: ' + id);
   const map = await prisma.map.findUnique({
     where: {
       mapid: id
@@ -127,7 +121,6 @@ export async function getTutorialByMapId(id: number) {
 }
 
 export async function getMap(id: number) {
-  console.log('Getting map with id: ', id, ' from db');
   const map = await prisma.map.findUnique({
     where: {
       mapid: id
@@ -140,7 +133,6 @@ export async function getMap(id: number) {
 
 export async function getNumberOfMaps() {
   const number = await prisma.map.count();
-  console.log('Getting number of maps: ', number, ' from db');
   await closeConnection();
 
   return number;
@@ -150,14 +142,13 @@ export async function closeConnection() {
   try {
     prisma.$disconnect;
   } catch (e) {
-    console.log(e);
+    console.error(e);
     prisma.$disconnect;
     process.exit(1);
   }
 }
 
 export async function getQuestion(id: number) {
-  console.log('Getting question with id: ', id, 'from db');
   const question = await prisma.quiz.findUnique({
     where: {
       quizid: id
@@ -228,7 +219,7 @@ export async function updateUserTotalScore(userId: number) {
 }
 
 export async function getHighScores() {
-  const highScores = await prisma.users.findMany({
+  return await prisma.users.findMany({
     take: 10,
     orderBy: {
       userstotalscore: 'desc'
@@ -238,10 +229,10 @@ export async function getHighScores() {
       userstotalscore: true
     }
   });
-  return highScores;
 }
+
 export async function getAllMapScores(userId: number) {
-  const allMapScores = await prisma.userscore.findMany({
+  return await prisma.userscore.findMany({
     where: {
       userscoreusersid: userId
     },
@@ -250,5 +241,4 @@ export async function getAllMapScores(userId: number) {
       userscorescore: true
     }
   });
-  return allMapScores;
 }

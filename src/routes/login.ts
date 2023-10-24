@@ -12,7 +12,7 @@ router.post('/', async (req: Request, res: Response) => {
 
   const user: users | null = await getUserByName(username);
 
-  if (user == null || !comparePassword(password, user.userspassword)) {
+  if (user == null || !await comparePassword(password, user.userspassword)) {
     return res.status(401).end();
   }
 

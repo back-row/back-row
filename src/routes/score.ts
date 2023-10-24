@@ -22,28 +22,25 @@ router.post('/', authenticateToken, async (req: Request, res: Response) => {
     const userScore: userscore | null = await getUserScore(user, map);
     if (!userScore) {
       await createScore(user, map, score);
-      console.log('Score inserted');
       res.status(201).send('Score inserted').end();
     } else if (userScore.userscorescore! < score) {
-      console.log('Score updated');
       await updateScore(userScore.userscoreid, score);
       res.status(200).send('Score updated').end();
     } else {
-      console.log('Score not updated');
       res.status(200).send('Score not updated').end();
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 
-  updateUserTotalScore(user);
+  await updateUserTotalScore(user);
 });
 
 router.get('/', async (req: Request, res: Response) => {
   try {
     res.json(await getHighScores()).end();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 });
 
@@ -52,7 +49,7 @@ router.get('/allmaps', authenticateToken, async (req: Request, res: Response) =>
   try {
     res.json(await getAllMapScores(user)).end();
   } catch (e) {
-    console.log('Failed to get all maps: ' + e);
+    console.error('Failed to get all maps: ' + e);
   }
 });
 
