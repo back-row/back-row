@@ -8,7 +8,7 @@ import { createAdmin } from './db/db';
 const bodyParser = require('body-parser');
 
 const corsOptions = {
-  origin: ['http://localhost:5173', 'http://localhost:8000'],
+  origin: '*',
   methods: ['POST', 'GET', 'PUT'],
   exposedHeaders: ['Authorization'],
   credentials: true
