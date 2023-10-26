@@ -33,7 +33,7 @@ router.post('/', authenticateToken, async (req: Request, res: Response) => {
       res.status(200).send('Score not updated').end();
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 
   updateUserTotalScore(user);
@@ -43,7 +43,7 @@ router.get('/', async (req: Request, res: Response) => {
   try {
     res.json(await getHighScores()).end();
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 });
 
@@ -52,7 +52,7 @@ router.get('/allmaps', authenticateToken, async (req: Request, res: Response) =>
   try {
     res.json(await getAllMapScores(user)).end();
   } catch (e) {
-    console.log('Failed to get all maps: ' + e);
+    console.error('Failed to get all maps: ' + e);
   }
 });
 

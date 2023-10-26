@@ -26,6 +26,7 @@ export async function createAdmin() {
     }
   }
 }
+
 export async function createUsers(user: users) {
   const encryptedPassword = await hashPassword(user.userspassword);
   await prisma.users.create({
@@ -150,7 +151,7 @@ export async function closeConnection() {
   try {
     prisma.$disconnect;
   } catch (e) {
-    console.log(e);
+    console.error(e);
     prisma.$disconnect;
     process.exit(1);
   }
@@ -240,6 +241,7 @@ export async function getHighScores() {
   });
   return highScores;
 }
+
 export async function getAllMapScores(userId: number) {
   const allMapScores = await prisma.userscore.findMany({
     where: {
