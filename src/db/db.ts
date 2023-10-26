@@ -66,7 +66,7 @@ export async function getUserByIDNoPassword(id: number) {
   });
   await closeConnection();
 
-  const userNoPassword = {
+  return {
     usersid: user?.usersid,
     usersname: user?.usersname,
     usersemail: user?.usersemail,
@@ -74,7 +74,6 @@ export async function getUserByIDNoPassword(id: number) {
     userslevel: user?.userslevel,
     usersimage: user?.usersimage
   };
-  return userNoPassword;
 }
 
 export async function getUserByName(name: string) {
