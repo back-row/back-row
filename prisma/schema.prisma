@@ -26,14 +26,17 @@ model map {
 model quiz {
   quizid            Int     @id @default(autoincrement())
   quizquestion      String? 
+  quizquestionse    String?
   map               map[]
 }
 
 model tutorial {
-  tutorialid          Int     @id @default(autoincrement())
-  tutorialdescription String?
-  tutorialhint        String? 
-  map                 map[]
+  tutorialid            Int     @id @default(autoincrement())
+  tutorialdescription   String?
+  tutorialhint          String? 
+  tutorialdescriptionse String?
+  tutorialhintse        String?
+  map                   map[]
 }
 
 model users {
