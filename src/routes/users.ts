@@ -6,7 +6,7 @@ import {
   getUserByIDNoPassword
 } from '../db/db';
 import { Request, Response } from 'express';
-import { deletUsersById } from '../db/db';
+import { deleteUsersById } from '../db/db';
 import { authenticateToken } from '../endpoints/auth';
 
 const express = require('express');
@@ -78,7 +78,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
     if (user === null) {
       res.status(400).json({ message: 'invalid id' }).end();
     } else {
-      deletUsersById(number);
+      deleteUsersById(number);
       res.status(204).end();
     }
   } catch (error) {
