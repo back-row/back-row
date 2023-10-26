@@ -228,7 +228,7 @@ export async function updateUserTotalScore(userId: number) {
 }
 
 export async function getHighScores() {
-  const highScores = await prisma.users.findMany({
+  return await prisma.users.findMany({
     take: 10,
     orderBy: {
       userstotalscore: 'desc'
@@ -238,11 +238,10 @@ export async function getHighScores() {
       userstotalscore: true
     }
   });
-  return highScores;
 }
 
 export async function getAllMapScores(userId: number) {
-  const allMapScores = await prisma.userscore.findMany({
+  return await prisma.userscore.findMany({
     where: {
       userscoreusersid: userId
     },
@@ -251,5 +250,4 @@ export async function getAllMapScores(userId: number) {
       userscorescore: true
     }
   });
-  return allMapScores;
 }
