@@ -26,6 +26,7 @@ export async function createAdmin() {
     }
   }
 }
+
 export async function createUsers(user: users) {
   const encryptedPassword = await hashPassword(user.userspassword);
   await prisma.users.create({
@@ -42,19 +43,15 @@ export async function createUsers(user: users) {
 }
 
 export async function getAllUsers() {
-  const users = await prisma.users.findMany();
-  console.log('This is printing out all users', users);
-  return users;
+  return await prisma.users.findMany();
 }
 
 export async function getUserByID(id: number) {
-  const user = await prisma.users.findUnique({
+  return await prisma.users.findUnique({
     where: {
       usersid: id
     }
   });
-  console.log(user);
-  return user;
 }
 
 export async function getUserByIDNoPassword(id: number) {
@@ -65,7 +62,7 @@ export async function getUserByIDNoPassword(id: number) {
   });
   await closeConnection();
 
-  const userNoPassword = {
+  return {
     usersid: user?.usersid,
     usersname: user?.usersname,
     usersemail: user?.usersemail,
@@ -73,7 +70,6 @@ export async function getUserByIDNoPassword(id: number) {
     userslevel: user?.userslevel,
     usersimage: user?.usersimage
   };
-  return userNoPassword;
 }
 
 export async function getUserByName(name: string) {
@@ -86,7 +82,7 @@ export async function getUserByName(name: string) {
   return user;
 }
 
-export async function deletUsersById(id: number) {
+export async function deleteUsersById(id: number) {
   const users = await prisma.users.delete({
     where: {
       usersid: id
@@ -150,7 +146,7 @@ export async function closeConnection() {
   try {
     prisma.$disconnect;
   } catch (e) {
-    console.log(e);
+    console.error(e);
     prisma.$disconnect;
     process.exit(1);
   }
@@ -228,7 +224,7 @@ export async function updateUserTotalScore(userId: number) {
 }
 
 export async function getHighScores() {
-  const highScores = await prisma.users.findMany({
+  return await prisma.users.findMany({
     take: 10,
     orderBy: {
       userstotalscore: 'desc'
@@ -238,10 +234,10 @@ export async function getHighScores() {
       userstotalscore: true
     }
   });
-  return highScores;
 }
+
 export async function getAllMapScores(userId: number) {
-  const allMapScores = await prisma.userscore.findMany({
+  return await prisma.userscore.findMany({
     where: {
       userscoreusersid: userId
     },
@@ -250,5 +246,4 @@ export async function getAllMapScores(userId: number) {
       userscorescore: true
     }
   });
-  return allMapScores;
 }

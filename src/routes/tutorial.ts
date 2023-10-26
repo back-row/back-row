@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { getTutorialByMapId } from '../db/db';
 
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 router.get('/:id', async (req: Request, res: Response) => {
@@ -16,7 +16,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
     res.json(tutorial).end();
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(500).send('Internal Server Error').end();
   }
 });

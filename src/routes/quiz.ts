@@ -16,7 +16,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     }
     res.json(question).end();
   } catch (e) {
-    console.log(e);
+    console.error(e);
     res.status(404).send('Question not found').end();
   }
 });
