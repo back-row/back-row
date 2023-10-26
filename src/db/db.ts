@@ -43,19 +43,15 @@ export async function createUsers(user: users) {
 }
 
 export async function getAllUsers() {
-  const users = await prisma.users.findMany();
-  console.log('This is printing out all users', users);
-  return users;
+  return await prisma.users.findMany();
 }
 
 export async function getUserByID(id: number) {
-  const user = await prisma.users.findUnique({
+  return await prisma.users.findUnique({
     where: {
       usersid: id
     }
   });
-  console.log(user);
-  return user;
 }
 
 export async function getUserByIDNoPassword(id: number) {
