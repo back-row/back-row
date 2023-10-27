@@ -49,7 +49,7 @@ router.get('/', authenticateToken, async (req: Request, res: Response) => {
   }
 });
 
-router.get('/all', async (req: Request, res: Response) => {
+router.get('/all', authenticateToken, async (req: Request, res: Response) => {
   try {
     const users = await getAllUsers();
     res.json(users).end();
@@ -59,7 +59,7 @@ router.get('/all', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/:id', async (req: Request, res: Response) => {
+router.get('/:id', authenticateToken, async (req: Request, res: Response) => {
   try {
     const number = +req.params.id;
     const user = await getUserByID(number);
@@ -71,7 +71,7 @@ router.get('/:id', async (req: Request, res: Response) => {
   }
 });
 
-router.delete('/:id', async (req: Request, res: Response) => {
+router.delete('/:id', authenticateToken, async (req: Request, res: Response) => {
   try {
     const number = +req.params.id;
     const user = await getUserByID(number);
