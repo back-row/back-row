@@ -1,9 +1,18 @@
 version: '3.9'
 
 services:
+  frontrow:
+    image: ghcr.io/back-row/front-row:main
+    ports:
+      - '8080:80'
+    depends_on:
+      - backrow
+      - backrowDB
+    environment:
+      - BACKEND_HOST=backrow:8000
+
   backrow:
-    build:
-      context: .
+    image: ghcr.io/back-row/back-row:main
     depends_on:
       - backrowDB
     ports:
@@ -13,24 +22,19 @@ services:
       - DATABASE_URL=postgresql://dev:dev@backrowDB:5432/backrow?schema=public
       - TOKEN_SECRET=suuuupersecretEncryptedToken
       - ADMIN_PASSWORD=12345
-    healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -h backrowDB -p 5432 -q -U dev']
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    restart: on-failure
+
   backrowDB:
     image: postgres:14-alpine
     ports:
       - 5432:5432
     volumes:
-      # - ~/docker/postgres:/var/lib/postgresql/data
       #create tables
       - ./sql/backRowdb.sql/:/docker-entrypoint-initdb.d/backRowdb.sql
       - ./sql/quiz.sql/:/docker-entrypoint-initdb.d/quiz.sql
       - ./sql/tutorialSql.sql/:/docker-entrypoint-initdb.d/tutorialSql.sql
       - ./sql/user.sql/:/docker-entrypoint-initdb.d/user.sql
       - ./sql/zmap.sql/:/docker-entrypoint-initdb.d/zmap.sql
-
     environment:
       - POSTGRES_PASSWORD=dev
       - POSTGRES_USER=dev
