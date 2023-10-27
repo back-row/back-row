@@ -10,13 +10,16 @@ CREATE TABLE IF NOT EXISTS users(
 
 CREATE TABLE IF NOT EXISTS quiz(
 	quizId SERIAL PRIMARY KEY,
-	quizQuestion TEXT
+	quizQuestion TEXT,
+	quizQuestionSe TEXT
 );
 
 CREATE TABLE IF NOT EXISTS tutorial(
 	tutorialId SERIAL PRIMARY KEY,
 	tutorialDescription TEXT,
-	tutorialHint TEXT
+	tutorialHint TEXT,
+	tutorialDescriptionSe TEXT,
+	tutorialHintSe TEXT
 );
 
 CREATE TABLE IF NOT EXISTS map(
