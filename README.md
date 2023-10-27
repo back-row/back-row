@@ -15,3 +15,5 @@ git clone https://github.com/back-row/back-row.git
 ```
 docker-compose up
 ```
+
+The app is now available at localhost:8080 (default)
