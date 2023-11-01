@@ -7,6 +7,7 @@ import {
 } from '../db/db';
 import { Request, Response } from 'express';
 import { deleteUsersById } from '../db/db';
+import { authenticateToken } from '../endpoints/auth';
 
 const express = require('express');
 const router = express.Router();
@@ -38,7 +39,7 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', authenticateToken, async (req: Request, res: Response) => {
   try {
     const user = await getUserByIDNoPassword(req.user.userid);
     res.json(user).end();
