@@ -2,9 +2,10 @@ import { Request, Response } from 'express';
 import { getTutorialByMapId } from '../db/db';
 
 import express from 'express';
+import { authenticateToken } from '../endpoints/auth';
 const router = express.Router();
 
-router.get('/:id', async (req: Request, res: Response) => {
+router.get('/:id', authenticateToken, async (req: Request, res: Response) => {
   const id = +req.params.id;
 
   console.log('New request for tutorial by mapid: ' + id + ' received.');
