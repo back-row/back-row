@@ -44,7 +44,7 @@ VALUES
       "choice2":"down, down, right, right, right, right, up, right, right, up, up, right",
       "answer2": ["down", "down", "right", "right", "right", "right", "up", "right", "right", "up","up","right"] ,
       "choice3":"down, down, right, right, up, right, right, right, right, up, up, right",
-       "answer3": ["down", "down", "right", "right", "up", "right", "right", "right", "right", "up","up","right"] 
+       "answer3": ["down", "down", "right", "right", "up", "right", "right", "right", "right", "up","up","right","up"] 
        }',
        '{"question": "Vilka kommandon får spelaren att gå till prinsessan?",
       "choice1": "down, down, right, up, right, left, up, right, right, up, up, right  ",
@@ -78,4 +78,24 @@ VALUES
     "answer2": ["hide()", "right", "right", "right", "right"],
     "choice3": "right, right, hide(spikes), right, right, down, up, right, right, right",
     "answer3": ["right", "right", "hide(spikes)", "right", "right", "down", "up", "right", "right", "right"]
+  }');
+  INSERT INTO quiz (quizQuestion,quizQuestionSe)
+VALUES
+    ('{
+    "question": "Which combination of commands makes the player move to the princess?",
+    "choice1": "down, down, right, right, up",
+    "answer1": ["down", "down", "right", "right", "up"],
+    "choice2": "right, right, right, down, down, down, down, left, left",
+    "answer2": ["right", "right", "right", "down", "down", "down", "down", "left", "left"],
+    "choice3": "right, right, down, right, right, down, up, right, right, right",
+    "answer3": ["right", "right", "down", "right", "right", "down", "up", "right", "right", "right"]
+  }',
+  '{
+    "question": "Vilka kommandon får spelaren att gå till prinsessan?",
+    "choice1": "down, down, right, right, up",
+    "answer1": ["down", "down", "right", "right", "up"],
+    "choice2": "right, right, right, down, down, down, down, left, left",
+    "answer2": ["right", "right", "right", "down", "down", "down", "down", "left", "left"],
+    "choice3": "right, right, down, right, right, down, up, right, right, right",
+    "answer3": ["right", "right", "down", "right", "right", "down", "up", "right", "right", "right"]
   }');
