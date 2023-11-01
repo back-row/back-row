@@ -7,7 +7,6 @@ import {
 } from '../db/db';
 import { Request, Response } from 'express';
 import { deleteUsersById } from '../db/db';
-import { authenticateToken } from '../endpoints/auth';
 
 const express = require('express');
 const router = express.Router();
@@ -39,7 +38,7 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/', authenticateToken, async (req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const user = await getUserByIDNoPassword(req.user.userid);
     res.json(user).end();
@@ -49,7 +48,7 @@ router.get('/', authenticateToken, async (req: Request, res: Response) => {
   }
 });
 
-router.get('/all', authenticateToken, async (req: Request, res: Response) => {
+router.get('/all', async (req: Request, res: Response) => {
   try {
     const users = await getAllUsers();
     res.json(users).end();
@@ -59,7 +58,7 @@ router.get('/all', authenticateToken, async (req: Request, res: Response) => {
   }
 });
 
-router.get('/:id', authenticateToken, async (req: Request, res: Response) => {
+router.get('/:id', async (req: Request, res: Response) => {
   try {
     const number = +req.params.id;
     const user = await getUserByID(number);
@@ -71,7 +70,7 @@ router.get('/:id', authenticateToken, async (req: Request, res: Response) => {
   }
 });
 
-router.delete('/:id', authenticateToken, async (req: Request, res: Response) => {
+router.delete('/:id', async (req: Request, res: Response) => {
   try {
     const number = +req.params.id;
     const user = await getUserByID(number);
@@ -87,7 +86,7 @@ router.delete('/:id', authenticateToken, async (req: Request, res: Response) => 
   }
 });
 
-router.put('/', authenticateToken, async (req: Request, res: Response) => {
+router.put('/', async (req: Request, res: Response) => {
   try {
     const number = req.user.userid;
 

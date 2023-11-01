@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
 import { getQuestion } from '../db/db';
-import { authenticateToken } from '../endpoints/auth';
 
 const express = require('express');
 const router = express.Router();
 
-router.get('/:id', authenticateToken, async (req: Request, res: Response) => {
+router.get('/:id', async (req: Request, res: Response) => {
   const id = +req.params.id;
   console.log('New request for quiz id: ' + id);
 

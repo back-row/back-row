@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
 import { getMap, getNumberOfMaps } from '../db/db';
-import { authenticateToken } from '../endpoints/auth';
 
 const express = require('express');
 const router = express.Router();
 
-router.get('/count', authenticateToken, async (req: Request, res: Response) => {
+router.get('/count', async (req: Request, res: Response) => {
   try {
     const number = await getNumberOfMaps();
     res.json(number);
@@ -15,7 +14,7 @@ router.get('/count', authenticateToken, async (req: Request, res: Response) => {
   }
 });
 
-router.get('/:id', authenticateToken, async (req: Request, res: Response) => {
+router.get('/:id', async (req: Request, res: Response) => {
   const id = +req.params.id;
   console.log('New request for map id: ' + id);
 
