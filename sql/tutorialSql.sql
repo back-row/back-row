@@ -73,8 +73,8 @@ VALUES
   'För att hjälpa spelaren att hitta prinsessan kommer vi att använda en programmeringskonstruktion som kallas en for-loop. 
   I vårt program kommer loopen att se ut så här:
   loop(2){
-      Flytta hjälten ned här..
-      Flytta hjälten högere här..
+      Flytta hjälten ned.
+      Flytta hjälten höger.
   }',
   'I det här spelet flyttar varje kommando du ger spelaren ett steg. För att hitta prinsessan
    behöver du använda en for-loop. Inuti loopen bör du upprepa kommandona flytta hjälten nedåt och 
