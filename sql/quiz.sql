@@ -78,7 +78,7 @@ VALUES ('{"question": "Which function is used to add event listeners in JavaScri
 
 INSERT INTO quiz (quizQuestion, quizQuestionSe)
 VALUES ('{
-    "question": "Which function is used to print to the console in JavaScript?",
+    "question": "  Which function is used to print to the console in JavaScript?",
     "choice1": "console.print()",
     "answer1": ["down", "hide()", "right", "right", "up"],
     "choice2": "console.write()",
@@ -88,7 +88,7 @@ VALUES ('{
   }',
 
   '{
-    "question": "Vilka kommandon får spelaren att ta sig till prinsessan?",
+    "question": "  Vilka kommandon får spelaren att ta sig till prinsessan?",
     "choice1": "down, hide(), right, right, up",
     "answer1": ["down", "hide()", "right", "right", "up"],
     "choice2": "hide(), right, right, right, right",
@@ -99,21 +99,21 @@ VALUES ('{
   INSERT INTO quiz (quizQuestion,quizQuestionSe)
 VALUES
     ('{
-    "question": "Which combination of commands makes the player move to the princess?",
-    "choice1": "",
-    "answer1": [],
-    "choice2": "",
-    "answer2": [],
-    "choice3": "",
-    "answer3": []
+    "question": "Which type of loop JavaScript is primarily used when you want to perform a task a certain number of times?",
+    "choice1": "if-sats",
+    "answer1": ["down", "left", "down", "left",  "down", "left",  "down", "left",  "down", "left", "down", "left"],
+    "choice2": "while-loop",
+    "answer2": ["down", "up", "down", "up",  "down", "up",  "down", "up",  "down", "up", "down", "up"],
+    "choice3": "for-loop",
+    "answer3": ["down", "right", "down", "right",  "down", "right",  "down", "right",  "down", "right", "down", "right"]
   }',
   '{
-    "question": "Vilka kommandon får spelaren att gå till prinsessan?",
-    "choice1": "",
-    "answer1": [],
-    "choice2": " ",
-    "answer2": [],
-    "choice3": " ",
-    "answer3": []
+    "question": "Vilken typ av loop i JavaScript används främst när du vill utföra en uppgift ett visst antal gånger?",
+    "choice1": "if-sats",
+    "answer1": ["down", "left", "down", "left",  "down", "left",  "down", "left",  "down", "left", "down", "left"],
+    "choice2": "while-loop",
+    "answer2": ["down", "up", "down", "up",  "down", "up",  "down", "up",  "down", "up", "down", "up"],
+    "choice3": "for-loop",
+    "answer3": ["down", "right", "down", "right",  "down", "right",  "down", "right",  "down", "right", "down", "right"]
   }');
 
