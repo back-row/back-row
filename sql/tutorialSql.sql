@@ -62,3 +62,28 @@ function hide(spikes) {
 Du kan fortfarande använda rörelsekommandona från tidigare nivåer för att flytta spelaren.',
 'Du behöver anropa funktionen "hide()" och skicka in variabeln "spikes" som en parameter.');
 
+INSERT INTO tutorial (tutorialDescription, tutorialHint,tutorialDescriptionSe,tutorialHintSe)
+VALUES
+  ('To help the player find the princess, we will use a programming construct called a for loop. In our program, the loop will look like this: 
+  loop(2){
+     Move the hero down here.
+     Move the hero right here.
+  }',
+  'In this game, each command you give moves the player one step. To find the princess, you will need to use a for loop. Inside the loop, you should repeat the commands move hero down and move hero right in this order.',
+  'För att hjälpa spelaren att hitta prinsessan kommer vi att använda en programmeringskonstruktion som kallas en for-loop. 
+  I vårt program kommer loopen att se ut så här:
+  loop(2){
+      Flytta hjälten ned.
+      Flytta hjälten höger.
+  }',
+  'I det här spelet flyttar varje kommando du ger spelaren ett steg. För att hitta prinsessan
+   behöver du använda en for-loop. Inuti loopen bör du upprepa kommandona flytta hjälten nedåt och 
+   flytta hjälten åt höger i den här ordningen.');
+
+INSERT INTO tutorial (tutorialDescription, tutorialHint,tutorialDescriptionSe,tutorialHintSe)
+VALUES
+  ('Help the player find the princess. You must use the commands "hero.up()", "hero.down()", "hero.right()" and "hero.left()" to move the player one step in that direction. For example, to move the player one step to the right, use the command "hero.right()".',
+  'Every command moves the player one step. You will need to move the player 2 steps to the down,4 steps down to right, then 2 steps to up and 2 to right to get reach the princess.',
+  'Hjälp spelaren att hitta prinsessan. Du måste använda kommandona "hero.up()", "hero.down()", "hero.right()" och "hero.left()" för att flytta spelaren ett steg åt det hållet. Till exempel, för att flytta spelaren ett steg åt höger, använd kommandot "hero.right()".',
+  'Varje kommando flyttar spelaren ett steg. Du kommer att behöva flytta spelaren 2 steg ner, 2 steg ner åt höger och sedan 2 steg upp, och upprepa detta mönster tills du når prinsessan.'  );
+

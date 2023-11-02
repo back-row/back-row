@@ -95,3 +95,25 @@ VALUES ('{
           "choice3": "console.log()",
           "answer3": ["right", "right", "hide(spikes)", "right", "right", "down", "up", "right", "right", "right"]
         }');
+        
+  INSERT INTO quiz (quizQuestion,quizQuestionSe)
+VALUES
+    ('{
+    "question": "Which type of loop JavaScript is primarily used when you want to perform a task a certain number of times?",
+    "choice1": "if-sats",
+    "answer1": ["down", "left", "down", "left",  "down", "left",  "down", "left",  "down", "left", "down", "left"],
+    "choice2": "while-loop",
+    "answer2": ["down", "up", "down", "up",  "down", "up",  "down", "up",  "down", "up", "down", "up"],
+    "choice3": "for-loop",
+    "answer3": ["down", "right", "down", "right",  "down", "right",  "down", "right",  "down", "right", "down", "right"]
+  }',
+  '{
+    "question": "Vilken typ av loop i JavaScript används främst när du vill utföra en uppgift ett visst antal gånger?",
+    "choice1": "if-sats",
+    "answer1": ["down", "left", "down", "left",  "down", "left",  "down", "left",  "down", "left", "down", "left"],
+    "choice2": "while-loop",
+    "answer2": ["down", "up", "down", "up",  "down", "up",  "down", "up",  "down", "up", "down", "up"],
+    "choice3": "for-loop",
+    "answer3": ["down", "right", "down", "right",  "down", "right",  "down", "right",  "down", "right", "down", "right"]
+  }');
+
