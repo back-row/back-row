@@ -86,15 +86,14 @@ VALUES ('{
     "choice3": "console.log()",
     "answer3": ["right", "right", "hide(spikes)", "right", "right", "down", "up", "right", "right", "right"]
   }',
-
- '{
-   "question": "Vilken funktion används för att skriva ut i konsolen i JavaScript?",
-    "choice1": "console.print()",
-    "answer1": ["down", "hide()", "right", "right", "up"],
-    "choice2": "console.write()",
-    "answer2": ["hide()", "right", "right", "right", "right"],
-    "choice3": "console.log()",
-    "answer3": ["right", "right", "hide(spikes)", "right", "right", "down", "up", "right", "right", "right"]
+        '{
+          "question": "Vilken funktion används för att skriva ut i konsolen i JavaScript?",
+          "choice1": "console.print()",
+          "answer1": ["down", "hide()", "right", "right", "up"],
+          "choice2": "console.write()",
+          "answer2": ["hide()", "right", "right", "right", "right"],
+          "choice3": "console.log()",
+          "answer3": ["right", "right", "hide(spikes)", "right", "right", "down", "up", "right", "right", "right"]
        
         }');
   INSERT INTO quiz (quizQuestion,quizQuestionSe)
