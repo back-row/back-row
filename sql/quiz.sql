@@ -78,7 +78,7 @@ VALUES ('{"question": "Which function is used to add event listeners in JavaScri
 
 INSERT INTO quiz (quizQuestion, quizQuestionSe)
 VALUES ('{
-    "question": "  Which function is used to print to the console in JavaScript?",
+    "question": "Which function is used to print to the console in JavaScript?",
     "choice1": "console.print()",
     "answer1": ["down", "hide()", "right", "right", "up"],
     "choice2": "console.write()",
@@ -94,8 +94,8 @@ VALUES ('{
           "answer2": ["hide()", "right", "right", "right", "right"],
           "choice3": "console.log()",
           "answer3": ["right", "right", "hide(spikes)", "right", "right", "down", "up", "right", "right", "right"]
-       
         }');
+        
   INSERT INTO quiz (quizQuestion,quizQuestionSe)
 VALUES
     ('{
