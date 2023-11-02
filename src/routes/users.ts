@@ -87,7 +87,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
   }
 });
 
-router.put('/', authenticateToken, async (req: Request, res: Response) => {
+router.put('/', async (req: Request, res: Response) => {
   try {
     const number = req.user.userid;
 
