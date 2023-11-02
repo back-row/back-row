@@ -83,12 +83,12 @@ VALUES
 VALUES
     ('{
     "question": "Which combination of commands makes the player move to the princess?",
-    "choice1": "down, down, right, right, up",
-    "answer1": ["down", "down", "right", "right", "up"],
-    "choice2": "right, right, right, down, down, down, down, left, left",
-    "answer2": ["right", "right", "right", "down", "down", "down", "down", "left", "left"],
-    "choice3": "right, right, down, right, right, down, up, right, right, right",
-    "answer3": ["right", "right", "down", "right", "right", "down", "up", "right", "right", "right"]
+    "choice1": "",
+    "answer1": [],
+    "choice2": "",
+    "answer2": [],
+    "choice3": "",
+    "answer3": []
   }',
   '{
     "question": "Vilka kommandon får spelaren att gå till prinsessan?",
