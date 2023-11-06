@@ -8,12 +8,13 @@ VALUES
 Hjälp spelaren att hitta "Prinsessan". Du måste använda kommandona "hero.up()", "hero.down()", "hero.right()" och "hero.left()" för att flytta spelaren ett steg åt det hållet. Till exempel, för att flytta spelaren ett steg åt höger, använd kommandot "hero.right()".',
 'Varje kommando flyttar spelaren ett steg. Du behöver flytta spelaren 3 steg åt höger, 4 steg ner och 2 steg åt höger för att nå prinsessan.');
 
-INSERT INTO tutorial (tutorialDescription, tutorialHint,tutorialDescriptionSe,tutorialHintSe)
-VALUES
-  ('Help the player find the princess. You must use the commands "hero.up()", "hero.down()", "hero.right()" and "hero.left()" to move the player one step in that direction. For example, to move the player one step to the right, use the command "hero.right()".',
-  'Every command moves the player one step. You will need to move the player 2 steps to the down,2 steps down to right and then 2 steps to up and repeat this pattern until you reach the princess.',
-  'Hjälp spelaren att hitta prinsessan. Du måste använda kommandona "hero.up()", "hero.down()", "hero.right()" och "hero.left()" för att flytta spelaren ett steg åt det hållet. Till exempel, för att flytta spelaren ett steg åt höger, använd kommandot "hero.right()".',
-  'Varje kommando flyttar spelaren ett steg. Du kommer att behöva flytta spelaren 2 steg ner, 2 steg ner åt höger och sedan 2 steg upp, och upprepa detta mönster tills du når prinsessan.');
+INSERT INTO tutorial (tutorialDescription, tutorialHint, tutorialDescriptionSe, tutorialHintSe)
+VALUES (
+  'Help the player find the princess. You must use the commands "hero.up()", "hero.down()", "hero.right()" and "hero.left()" to move the player one step in that direction. For example, to move the player one step to the right, use the command "hero.right()". You can also move the player more than 1 step by providing a number, for example, "hero.right(2)" will move the player 2 steps to the right.',
+  'Every command moves the player one step. To move more than 1 step, include a number in the command. For instance, move the player 2 steps down, 2 steps down to the right, then 2 steps up, and repeat this pattern until you reach the princess.',
+  'Hjälp spelaren att hitta prinsessan. Du måste använda kommandona "hero.up()", "hero.down()", "hero.right()" och "hero.left()" för att flytta spelaren ett steg åt det hållet. Till exempel, för att flytta spelaren ett steg åt höger, använd kommandot "hero.right()". Du kan också flytta spelaren mer än 1 steg genom att ange ett nummer, till exempel kommer "hero.right(2)" att flytta spelaren 2 steg åt höger.',
+  'Varje kommando flyttar spelaren ett steg. För att flytta mer än 1 steg, inkludera ett nummer i kommandot. Till exempel, flytta spelaren 2 steg ner, 2 steg ner åt höger, och sedan 2 steg upp, och upprepa detta mönster tills du når prinsessan.'
+);
 
 INSERT INTO tutorial (tutorialDescription, tutorialHint,tutorialDescriptionSe,tutorialHintSe)
 VALUES
