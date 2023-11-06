@@ -1,18 +1,18 @@
 INSERT INTO quiz (quizQuestion, quizQuestionSe)
 VALUES ('{
-    "question": "Which keyword is used to declare variables in JavaScript?",
-    "choice1": "variable",
+    "question": "Which keyword is not used to declare variables in JavaScript?",
+    "choice1": "var",
     "answer1": ["down", "down", "right", "right", "up"],
-    "choice2": "var",
+    "choice2": "variable",
     "answer2": ["right", "right", "right", "down", "down", "down", "down", "left", "left"],
     "choice3": "let",
     "answer3": ["right", "right", "down", "right", "right", "down", "up", "right", "right", "right"]
   }',
         '{
-          "question": "Vilket nyckelord används för att deklarera variabler i JavaScript?",
-          "choice1": "variable",
+          "question": "Vilket nyckelord används inte för att deklarera variabler i JavaScript?",
+          "choice1": "var",
           "answer1": ["down", "down", "right", "right", "up"],
-          "choice2": "var",
+          "choice2": "variable",
           "answer2": ["right", "right", "right", "down", "down", "down", "down", "left", "left"],
           "choice3": "let",
           "answer3": ["right", "right", "down", "right", "right", "down", "up", "right", "right", "right"]
