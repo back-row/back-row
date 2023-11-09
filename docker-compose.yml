@@ -22,7 +22,7 @@ services:
       - DATABASE_URL=postgresql://dev:dev@backrowDB:5432/backrow?schema=public
       - TOKEN_SECRET=suuuupersecretEncryptedToken
       - ADMIN_PASSWORD=12345
-    restart: on-failure
+    restart: always
 
   backrowDB:
     image: postgres:14-alpine
@@ -39,3 +39,4 @@ services:
       - POSTGRES_PASSWORD=dev
       - POSTGRES_USER=dev
       - POSTGRES_DB=backrow
+    
